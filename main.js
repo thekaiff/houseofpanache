@@ -766,7 +766,7 @@ function showFormMsg(type, msg) {
     ? 'background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:12px 16px;font-size:13px;color:#DC2626;margin-bottom:14px;display:flex;align-items:center;gap:8px;'
     : 'background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:14px 18px;font-size:13px;color:#16A34A;margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:600;';
 
-  el.innerHTML     = (isErr ? '⚠️ ' : '✅ ') + msg;
+  el.innerHTML     = (isErr ? '⚠️ ' : '✓') + msg;
   el.style.display = 'flex';
 
   if (isErr) setTimeout(() => { el.style.display = 'none'; }, 6000);

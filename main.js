@@ -1,5 +1,5 @@
 /* ============================================================
-   HOUSE OF PANACHE — main.js
+   HOUSE OF PANACHE — main.js 
    ============================================================ */
 
 'use strict';
@@ -697,7 +697,7 @@ async function submitReview() {
     rvRating     = 0;
     document.querySelectorAll('.rev-star').forEach(s => s.classList.remove('on'));
 
-    msgEl.textContent = '✅ Thank you! Your review will appear after approval.';
+    msgEl.textContent = '✓ Thank you! Your review will appear shortly.';
     msgEl.className   = 'rev-form-msg ok';
     setTimeout(() => { msgEl.className = 'rev-form-msg'; }, 6000);
 

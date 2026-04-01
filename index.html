@@ -1,575 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>House of Panache | Premium Uniform Design & Manufacturing UAE</title>
-<meta name="description" content="UAE's leading uniform design and manufacturing company with 30+ years of experience.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --green:        #4ADE80;
-  --green-dark:   #22C55E;
-  --green-darker: #16A34A;
-  --green-light:  #86EFAC;
-  --green-pale:   #F0FDF4;
-  --green-mid:    #DCFCE7;
-  --green-glow:   rgba(74,222,128,0.18);
-  --green-glow2:  rgba(74,222,128,0.08);
-  --white:    #ffffff;
-  --off-white:#F8FAFB;
-  --gray-50:  #F9FAFB;
-  --gray-100: #F3F4F6;
-  --gray-200: #E5E7EB;
-  --gray-300: #D1D5DB;
-  --gray-400: #9CA3AF;
-  --gray-500: #6B7280;
-  --gray-600: #4B5563;
-  --gray-700: #374151;
-  --gray-800: #1F2937;
-  --gray-900: #111827;
-  --radius-xs: 8px;
-  --radius-sm: 14px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-xl: 40px;
-  --radius-2xl:56px;
-  --shadow-sm: 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.10);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.12);
-  --ease: cubic-bezier(0.25,0.46,0.45,0.94);
-  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
-  --t: all 0.35s var(--ease);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--gray-700);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-
-/* PAGE SYSTEM */
-.page{display:none}
-.page.active{display:block;animation:fadeUp .5s var(--ease) both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-
-/* ====== FLOATING NAV ====== */
-nav{
-  position:fixed;
-  top:20px;left:50%;transform:translateX(-50%);
-  z-index:1000;
-  width:calc(100% - 48px);max-width:1240px;
-  padding:13px 16px 13px 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border:1px solid rgba(255,255,255,0.95);
-  border-radius:100px;
-  box-shadow:0 4px 24px rgba(0,0,0,0.08),0 1px 0 rgba(255,255,255,0.6) inset;
-  transition:all .4s var(--ease);
-}
-nav.scrolled{top:12px;background:rgba(255,255,255,0.97);box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:10px 14px 10px 18px}
-.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;flex-shrink:0}
-.nav-logo-mark{display:none}
-.nav-logo-img{height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;display:block;flex-shrink:0}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.nav-logo-text b{font-size:14px;font-weight:700;color:var(--gray-900);letter-spacing:-.2px;white-space:nowrap}
-.nav-logo-text span{font-size:9px;font-weight:600;letter-spacing:.18em;color:var(--green-darker);text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
-.nav-link{padding:8px 15px;font-size:13px;font-weight:500;color:var(--gray-500);background:none;border:none;border-radius:50px;cursor:pointer;transition:var(--t);white-space:nowrap;font-family:inherit}
-.nav-link:hover{color:var(--gray-900);background:var(--gray-100)}
-.nav-link.active-link{color:var(--green-darker);background:var(--green-pale);font-weight:600}
-.nav-cta{padding:10px 20px;background:var(--gray-900);color:#fff;border:none;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:var(--t);white-space:nowrap;flex-shrink:0;font-family:inherit}
-.nav-cta:hover{background:var(--green-darker);transform:translateY(-1px);box-shadow:0 6px 20px var(--green-glow)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:7px;border-radius:10px}
-.nav-hamburger span{display:block;width:20px;height:2px;background:var(--gray-700);border-radius:2px;transition:var(--t)}
-.mob-menu{display:none;position:fixed;inset:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:80px 32px}
-.mob-menu.open{display:flex}
-.mob-link{width:100%;padding:16px 24px;text-align:center;font-size:19px;font-weight:600;color:var(--gray-800);background:none;border:none;border-radius:var(--radius-md);cursor:pointer;transition:var(--t);font-family:inherit}
-.mob-link:hover{background:var(--green-pale);color:var(--green-darker)}
-.mob-close{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;background:var(--gray-100);border:none;font-size:18px;cursor:pointer;transition:var(--t)}
-.mob-close:hover{background:var(--green-pale)}
-
-/* ====== HERO ====== */
-.hero{min-height:100svh;display:flex;flex-direction:column;background:var(--gray-900);position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;overflow:hidden}
-.hero-bg-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
-.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(10,20,8,0.78) 0%,rgba(10,20,8,0.55) 50%,rgba(10,20,8,0.72) 100%)}
-.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(74,222,128,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 100%)}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}
-.hero-orb-1{width:500px;height:500px;top:-100px;right:-50px;background:rgba(74,222,128,.08);animation:blobFl 9s ease-in-out infinite}
-.hero-orb-2{width:350px;height:350px;bottom:-50px;left:-80px;background:rgba(34,197,94,.06);animation:blobFl 12s ease-in-out infinite reverse}
-@keyframes blobFl{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-24px) scale(1.04)}}
-.hero-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 40px;max-width:1240px;margin:0 auto;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px 7px 10px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);border-radius:50px;margin-bottom:28px;opacity:0;animation:su .7s .2s var(--ease) forwards}
-.hero-badge-dot{width:22px;height:22px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
-.hero-badge span{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green-light)}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,78px);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;max-width:820px;margin-bottom:20px;opacity:0;animation:su .8s .35s var(--ease) forwards}
-.hero-h1 .ital{color:var(--green);font-style:italic}
-.hero-sub{font-size:clamp(14px,1.7vw,17px);color:rgba(255,255,255,.55);max-width:500px;line-height:1.75;margin-bottom:36px;opacity:0;animation:su .8s .5s var(--ease) forwards}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:56px;opacity:0;animation:su .8s .65s var(--ease) forwards}
-.btn-hp{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:var(--t);font-family:inherit}
-.btn-green{background:var(--green);color:var(--gray-900);box-shadow:0 8px 28px rgba(74,222,128,.35)}
-.btn-green:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 12px 36px rgba(74,222,128,.45)}
-.btn-ghost{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.15)!important}
-.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)!important}
-.hero-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:36px;width:100%;justify-content:center;flex-wrap:wrap;opacity:0;animation:su .8s .8s var(--ease) forwards}
-.hstat{padding:0 36px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
-.hstat:last-child{border-right:none}
-.hstat-n{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:700;color:#fff;line-height:1}
-.hstat-n span{color:var(--green)}
-.hstat-l{font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;letter-spacing:.04em}
-@keyframes su{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-/* ====== MARQUEE ====== */
-.marquee-strip{background:var(--green-pale);border-top:1px solid var(--green-mid);border-bottom:1px solid var(--green-mid);padding:11px 0;overflow:hidden}
-.marquee-track{display:flex;gap:28px;animation:mq 28s linear infinite;width:max-content}
-.marquee-strip:hover .marquee-track{animation-play-state:paused}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mq-item{display:flex;align-items:center;gap:8px;padding:8px 20px;background:var(--white);border:1px solid var(--green-mid);border-radius:50px;font-size:12px;font-weight:600;color:var(--green-darker);white-space:nowrap}
-
-/* ====== LAYOUT ====== */
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-.sec{padding:96px 24px;max-width:1240px;margin:0 auto}
-
-/* eyebrow */
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green-darker);margin-bottom:14px}
-.eyebrow::before{content:'';width:18px;height:2px;background:var(--green);border-radius:2px}
-.sh{font-family:'Playfair Display',serif;font-size:clamp(30px,3.8vw,54px);font-weight:700;color:var(--gray-900);line-height:1.12;letter-spacing:-.02em}
-.sh .g{color:var(--green-darker);font-style:italic}
-
-/* generic buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:var(--t);font-family:inherit}
-.btn-prim{background:var(--green-darker);color:#fff;box-shadow:0 6px 20px rgba(22,163,74,.28)}
-.btn-prim:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(22,163,74,.4)}
-.btn-out{background:transparent;color:var(--gray-700);border:1.5px solid var(--gray-200)!important}
-.btn-out:hover{border-color:var(--green)!important;color:var(--green-darker);background:var(--green-pale)}
-.btn-dark{background:var(--gray-900);color:#fff}
-.btn-dark:hover{background:var(--green-darker);transform:translateY(-1px)}
-
-/* ====== CLIENTS ====== */
-.clients-wrap{background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-2xl);padding:56px 48px;position:relative;overflow:hidden}
-.clients-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green-pale),var(--green),var(--green-dark),var(--green-pale));background-size:200% 100%;animation:shimmer 3s linear infinite}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.clients-top{text-align:center;margin-bottom:44px}
-.clients-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-400)}
-.clients-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,32px);font-weight:700;color:var(--gray-900);margin-top:10px}
-.clients-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.client-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:default;transition:var(--t);text-align:center;min-height:150px;position:relative;overflow:hidden}
-.client-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green-pale),transparent);opacity:0;transition:var(--t)}
-.client-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--green-dark));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
-.client-card:hover{border-color:var(--green-light);transform:translateY(-6px);box-shadow:0 12px 40px var(--green-glow)}
-.client-card:hover::after{opacity:1}
-.client-card:hover::before{transform:scaleX(1)}
-.cl-logo{width:100%;max-width:120px;height:52px;object-fit:contain;object-position:center;filter:grayscale(1) opacity(0.55);transition:var(--t);position:relative;z-index:1}
-.client-card:hover .cl-logo{filter:grayscale(0) opacity(1)}
-.cl-name{font-size:12px;font-weight:600;color:var(--gray-400);position:relative;z-index:1;transition:var(--t);letter-spacing:.02em}
-.client-card:hover .cl-name{color:var(--green-darker)}
-.cl-ind{font-size:10px;color:var(--gray-300);position:relative;z-index:1;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.clients-stats{display:flex;gap:28px;justify-content:center;margin-top:40px;flex-wrap:wrap}
-.cstat{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-500)}
-.cstat-ic{width:32px;height:32px;background:var(--green-pale);border:1px solid var(--green-mid);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cstat-ic svg{width:15px;height:15px;stroke:var(--green-darker);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.cstat strong{color:var(--gray-800)}
-
-/* ====== PAIN ====== */
-.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pain-card{padding:36px;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);transition:var(--t);position:relative;overflow:hidden}
-.pain-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
-.pain-card:hover{transform:translateY(-6px);border-color:var(--green-light);box-shadow:0 12px 40px var(--green-glow)}
-.pain-card:hover::after{transform:scaleX(1)}
-.pain-ico{display:none}
-.pain-icon-wrap{width:48px;height:48px;border-radius:13px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:var(--t)}
-.pain-icon-wrap svg{width:22px;height:22px;stroke:var(--green-darker);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:var(--t)}
-.pain-card:hover .pain-icon-wrap{background:var(--green);border-color:var(--green)}
-.pain-card:hover .pain-icon-wrap svg{stroke:#fff}.pain-num{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-dark);margin-bottom:8px}
-.pain-ttl{font-size:18px;font-weight:700;color:var(--gray-900);margin-bottom:10px;line-height:1.3}
-.pain-txt{font-size:13px;color:var(--gray-500);line-height:1.75}
-
-/* ====== BENEFITS ====== */
-.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.ben-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:28px}
-.ben-item{display:flex;align-items:flex-start;gap:14px;padding:15px 18px;background:var(--off-white);border:1px solid var(--gray-100);border-radius:var(--radius-md);transition:var(--t)}
-.ben-item:hover{background:var(--green-pale);border-color:var(--green-light)}
-.ben-chk{width:24px;height:24px;min-width:24px;background:var(--green);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;margin-top:2px}
-.ben-txt strong{display:block;font-size:14px;font-weight:700;color:var(--gray-900)}
-.ben-txt span{font-size:12px;color:var(--gray-500)}
-.ben-visual{position:relative;border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-xl)}
-.ben-vis-in{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border-radius:var(--radius-xl);overflow:hidden}
-.ben-vis-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;display:block}
-.ben-vis-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.05) 100%);z-index:1}
-.ben-ico{display:none}
-.ben-lbl{position:relative;z-index:2;font-size:15px;font-weight:600;color:#fff;text-align:center;padding:0 32px;line-height:1.65;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
-.ben-badge{position:absolute;bottom:24px;left:24px;background:var(--white);border-radius:var(--radius-md);padding:16px 20px;box-shadow:var(--shadow-md)}
-.ben-badge .nn{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--green-darker);line-height:1}
-.ben-badge .ll{font-size:11px;color:var(--gray-500);margin-top:3px}
-.ben-badge2{position:absolute;top:24px;right:24px;background:var(--green);border-radius:var(--radius-md);padding:14px 18px;box-shadow:0 8px 24px var(--green-glow);text-align:center}
-.ben-badge2 .nn{font-size:24px;font-weight:800;color:#fff;line-height:1;font-family:'Playfair Display',serif}
-.ben-badge2 .ll{font-size:10px;font-weight:600;color:rgba(255,255,255,.8);margin-top:2px}
-
-/* ====== PROCESS — CINEMATIC ANIMATED TIMELINE ====== */
-.proc-sec{background:var(--gray-900);overflow:hidden}
-.proc-in{max-width:1240px;margin:0 auto;padding:96px 24px}
-.proc-hdr{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:72px}
-.proc-hdr .sh{color:#fff}
-.proc-hdr-r{color:rgba(255,255,255,.45);font-size:14px;line-height:1.85}
-.timeline{display:grid;grid-template-columns:repeat(4,1fr);position:relative;gap:0}
-.tl-line-bg{position:absolute;top:40px;left:40px;right:40px;height:2px;background:rgba(255,255,255,.07);z-index:0}
-.tl-progress{position:absolute;top:40px;left:40px;height:2px;background:linear-gradient(90deg,var(--green),var(--green-dark));z-index:1;width:0%;transition:width 1.2s var(--ease);box-shadow:0 0 12px rgba(74,222,128,.4)}
-.step{padding:0 18px;position:relative;z-index:2;cursor:pointer;transition:var(--t)}
-.step:first-child{padding-left:0}
-.step:last-child{padding-right:0}
-.step-circ{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;transition:all .5s var(--ease-spring)}
-.step-ico-in{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .5s var(--ease-spring)}
-.step-num{position:absolute;top:-10px;right:-10px;width:26px;height:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(255,255,255,.4);transition:var(--t)}
-.step.active .step-circ,.step.done .step-circ{background:rgba(74,222,128,.12);border-color:var(--green);box-shadow:0 0 0 8px rgba(74,222,128,.06),0 0 32px rgba(74,222,128,.2)}
-.step.active .step-ico-in,.step.done .step-ico-in{background:var(--green)}
-.step.active .step-num,.step.done .step-num{background:var(--green);border-color:var(--green);color:var(--gray-900)}
-.step-tag{display:inline-block;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);margin-bottom:12px;transition:var(--t)}
-.step.active .step-tag,.step.done .step-tag{background:rgba(74,222,128,.12);color:var(--green)}
-.step-ttl{font-size:16px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:8px;line-height:1.3;transition:var(--t)}
-.step.active .step-ttl,.step.done .step-ttl{color:#fff}
-.step-dsc{font-size:12px;color:rgba(255,255,255,.3);line-height:1.75;transition:var(--t)}
-.step.active .step-dsc,.step.done .step-dsc{color:rgba(255,255,255,.5)}
-/* Expanded step detail panel */
-.step-detail{display:none;grid-column:1/-1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:32px 36px;margin-top:36px;animation:fadeUp .4s var(--ease) both}
-.step-detail.show{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.det-item{display:flex;align-items:flex-start;gap:12px}
-.det-ico{width:38px;height:38px;min-width:38px;background:rgba(74,222,128,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
-.det-text strong{display:block;font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:4px}
-.det-text span{font-size:12px;color:rgba(255,255,255,.38);line-height:1.65}
-
-/* ====== SERVICES SPLIT ====== */
-.split-sec{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:100vh}
-.split-l{position:sticky;top:0;height:100vh;align-self:flex-start;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:64px 52px;overflow:hidden;z-index:1}
-.split-l-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;display:block}
-.split-l-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,20,8,0.82) 0%,rgba(10,20,8,0.65) 60%,rgba(10,20,8,0.78) 100%);z-index:1}
-.split-noise{position:absolute;inset:0;opacity:.03;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.split-glow{position:absolute;width:400px;height:400px;background:rgba(74,222,128,.06);border-radius:50%;filter:blur(80px);top:-100px;right:-100px;z-index:2}
-.split-con{position:relative;z-index:3}
-.split-h{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,50px);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
-.split-h .g{color:var(--green);font-style:italic}
-.split-sub{font-size:14px;color:rgba(255,255,255,.42);line-height:1.75;margin-bottom:32px;max-width:320px}
-.split-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
-.split-pill{padding:6px 14px;border-radius:50px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:11px;font-weight:500;color:rgba(255,255,255,.45);transition:var(--t);cursor:default}
-.split-pill:hover,.split-pill.on{background:rgba(74,222,128,.12);border-color:var(--green);color:var(--green)}
-.split-r{background:var(--off-white);padding:60px 36px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}
-.split-r-hdr{padding-bottom:6px}
-.svc-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px 28px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start;transition:var(--t);cursor:default}
-.svc-card:hover{border-color:var(--green-light);box-shadow:0 6px 28px var(--green-glow);transform:translateX(5px)}
-.svc-ico{width:46px;height:46px;border-radius:13px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;transition:var(--t);flex-shrink:0}
-.svc-ico svg{width:20px;height:20px;stroke:var(--green-darker);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:var(--t)}
-.svc-card:hover .svc-ico{background:var(--green);border-color:var(--green)}
-.svc-card:hover .svc-ico svg{stroke:#fff}
-.svc-ttl{font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:5px}
-.svc-dsc{font-size:12px;color:var(--gray-500);line-height:1.65}
-.svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.svc-tag{padding:3px 10px;border-radius:50px;background:var(--gray-100);font-size:10px;font-weight:600;color:var(--gray-500)}
-.svc-card:hover .svc-tag{background:var(--green-mid);color:var(--green-darker)}
-.svc-arr{width:30px;height:30px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--gray-400);transition:var(--t);margin-top:3px;flex-shrink:0}
-.svc-card:hover .svc-arr{background:var(--green);color:var(--gray-900)}
-
-/* ====== ABOUT SNIPPET ====== */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.about-vis{position:relative;border-radius:var(--radius-xl);overflow:visible}
-.aimg{width:100%;aspect-ratio:3/4;border-radius:var(--radius-xl);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;box-shadow:var(--shadow-xl);position:relative}
-.aimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;display:block}
-.aimg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.05) 100%);z-index:1}
-.aimg::before{display:none}
-.a-yr{position:absolute;bottom:-18px;right:-18px;width:108px;height:108px;background:var(--green);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(74,222,128,.4)}
-.a-yr .yn{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#fff;line-height:1}
-.a-yr .yl{font-size:9px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.8);text-transform:uppercase}
-.a-mini{position:absolute;top:22px;right:-18px;background:var(--white);border-radius:var(--radius-md);padding:14px 18px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px}
-.a-mini .n{font-size:20px;font-weight:800;color:var(--green-darker)}
-.a-mini .l{font-size:11px;color:var(--gray-500);max-width:72px;line-height:1.4}
-.about-quote{border-left:3px solid var(--green);padding:14px 18px;background:var(--green-pale);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--gray-800);line-height:1.6;margin:22px 0}
-
-/* ====== TESTIMONIALS ====== */
-.rev-wrap{background:var(--gray-900);border-radius:var(--radius-2xl);padding:64px 52px;overflow:hidden;position:relative}
-.rev-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
-.rev-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:20px;flex-wrap:wrap}
-.rev-top .sh{color:#fff}
-.rev-ctrls{display:flex;gap:10px}
-.r-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.55);font-size:15px;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:center}
-.r-btn:hover{background:var(--green);border-color:var(--green);color:var(--gray-900)}
-.rev-slider{overflow:hidden}
-.rev-track{display:flex;gap:20px;transition:transform .55s var(--ease)}
-.r-card{flex:0 0 calc(50% - 10px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-xl);padding:32px}
-.r-stars{font-size:13px;margin-bottom:14px}
-.r-txt{font-size:14px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:24px;font-style:italic}
-.r-auth{display:flex;align-items:center;gap:12px}
-.r-av{width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gray-900);font-size:14px}
-.r-nm{font-weight:700;color:#fff;font-size:14px}
-.r-role{font-size:11px;color:rgba(255,255,255,.38);margin-top:2px}
-.rev-dots{display:flex;gap:8px;justify-content:center;margin-top:26px}
-.r-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:var(--t)}
-.r-dot.on{background:var(--green);width:24px;border-radius:4px}
-
-/* ====== FAQ ====== */
-.faq-grid{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.faq-item{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);overflow:hidden;transition:var(--t)}
-.faq-item.open{border-color:var(--green-light);box-shadow:0 4px 20px var(--green-glow2)}
-.faq-q{padding:20px 26px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:14px;font-size:14px;font-weight:600;color:var(--gray-900)}
-.faq-tog{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-500);font-size:17px;font-weight:300;transition:all .35s var(--ease-spring)}
-.faq-item.open .faq-tog{background:var(--green);color:#fff;transform:rotate(45deg)}
-.faq-body{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s ease;padding:0 26px;font-size:13px;color:var(--gray-500);line-height:1.8}
-.faq-body-in{padding-bottom:20px}
-.faq-item.open .faq-body{max-height:200px}
-
-/* ====== CTA BANNER ====== */
-.cta-banner{background:linear-gradient(135deg,var(--green-darker) 0%,var(--green-dark) 50%,var(--green) 100%);border-radius:var(--radius-2xl);padding:72px 52px;text-align:center;position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% -20%,rgba(255,255,255,.15),transparent)}
-.cta-banner::after{content:'';position:absolute;bottom:-40px;right:-40px;width:240px;height:240px;background:rgba(255,255,255,.06);border-radius:50%}
-.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,50px);font-weight:700;color:#fff;margin-bottom:14px;position:relative;z-index:1;letter-spacing:-.02em}
-.cta-banner p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:32px;position:relative;z-index:1}
-.cta-btns{display:flex;gap:12px;justify-content:center;position:relative;z-index:1;flex-wrap:wrap}
-.btn-wh{background:#fff;color:var(--green-darker);font-weight:700;border:none}
-.btn-wh:hover{background:var(--gray-100);transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.15)}
-.btn-wh-o{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4)!important;backdrop-filter:blur(8px)}
-.btn-wh-o:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.7)!important}
-
-/* ====== FOOTER ====== */
-footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
-.ft-in{max-width:1240px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:52px;margin-bottom:56px}
-.ft-desc{font-size:13px;color:rgba(255,255,255,.42);line-height:1.8;margin-top:18px}
-.ft-uae{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;color:var(--green);font-weight:600}
-.ft-soc{display:flex;gap:10px;margin-top:22px}
-.soc-btn{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);position:relative;overflow:hidden}
-.soc-btn::before{content:'';position:absolute;inset:0;background:var(--green);opacity:0;transition:opacity .3s var(--ease)}
-.soc-btn:hover::before{opacity:1}
-.soc-btn:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 20px rgba(74,222,128,.3)}
-.soc-btn svg{width:17px;height:17px;fill:rgba(255,255,255,.45);transition:var(--t);position:relative;z-index:1}
-.soc-btn:hover svg{fill:var(--gray-900)}
-.soc-btn:hover .soc-stroke{stroke:var(--gray-900) !important}
-.ft-col-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:9px}
-.ft-links button,.ft-links a{font-size:13px;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;padding:0;text-align:left;text-decoration:none;transition:var(--t);font-family:inherit}
-.ft-links button:hover,.ft-links a:hover{color:var(--green)}
-.ft-cr{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.ft-cr-ico{color:var(--green);font-size:13px;margin-top:2px}
-.ft-cr-txt{font-size:12px;color:rgba(255,255,255,.42);line-height:1.6}
-.ft-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.ft-copy{font-size:11px;color:rgba(255,255,255,.22)}
-.ft-leg{display:flex;gap:18px}
-.ft-leg a{font-size:11px;color:rgba(255,255,255,.22);text-decoration:none;transition:var(--t)}
-.ft-leg a:hover{color:var(--green)}
-
-/* ====== ABOUT PAGE ====== */
-.ap-hero{max-width:1240px;margin:0 auto;padding:136px 24px 72px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.v-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:32px;transition:var(--t)}
-.v-card:hover{border-color:var(--green-light);box-shadow:0 8px 32px var(--green-glow);transform:translateY(-4px)}
-.v-n{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:var(--gray-100);line-height:1;margin-bottom:14px}
-.v-ttl{font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:9px}
-.v-dsc{font-size:13px;color:var(--gray-500);line-height:1.75}
-.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.ind-card{grid-column:span 1}
-.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;justify-items:stretch}
-.ind-card{grid-column:span 1}
-.ind-grid .ind-card:nth-child(9),.ind-grid .ind-card:nth-child(10),.ind-grid .ind-card:nth-child(11){grid-column:span 1}
-.ind-grid .ind-card:last-child:nth-child(4n-3),.ind-grid .ind-card:last-child:nth-child(4n-2),.ind-grid .ind-card:last-child:nth-child(4n-1){grid-column:auto}
-.ind-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px 20px 24px;text-align:left;transition:var(--t);cursor:default;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:0}
-.ind-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-dark));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
-.ind-card:hover{border-color:var(--green-light);box-shadow:0 10px 36px var(--green-glow);transform:translateY(-5px)}
-.ind-card:hover::before{transform:scaleX(1)}
-.ind-card:hover .ind-icon-wrap{background:var(--green);border-color:var(--green)}
-.ind-card:hover .ind-icon-wrap svg{stroke:#fff}
-.ind-icon-wrap{width:46px;height:46px;border-radius:12px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:var(--t);flex-shrink:0}
-.ind-icon-wrap svg{width:22px;height:22px;stroke:var(--green-darker);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:var(--t)}
-.ind-nm{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:5px;letter-spacing:-.01em}
-.ind-sub{font-size:12px;color:var(--gray-400);line-height:1.5}
-.ind-arr{margin-top:auto;padding-top:14px;font-size:12px;font-weight:600;color:var(--green-darker);opacity:0;transform:translateX(-6px);transition:var(--t);display:flex;align-items:center;gap:4px}
-.ind-card:hover .ind-arr{opacity:1;transform:translateX(0)}
-
-/* ====== SERVICES PAGE ====== */
-.sp-hero{max-width:1240px;margin:0 auto;padding:136px 24px 64px;text-align:center}
-/* .sf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.sfcard{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:var(--t)}
-.sfcard:hover{border-color:var(--green-light);box-shadow:0 8px 40px var(--green-glow);transform:translateY(-5px)}
-.sfcard-head{height:170px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
-.sfcard-body{padding:26px}
-.sfcard-body h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:8px}
-.sfcard-body p{font-size:13px;color:var(--gray-500);line-height:1.7;margin-bottom:14px} */
-.sf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.sfcard{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:var(--t);display:flex;flex-direction:column;position:relative}
-.sfcard::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-dark));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);z-index:1}
-.sfcard:hover{border-color:var(--green-light);box-shadow:0 10px 40px var(--green-glow);transform:translateY(-5px)}
-.sfcard:hover::before{transform:scaleX(1)}
-.sfcard:hover .sfcard-icon-wrap{background:var(--green);border-color:var(--green)}
-.sfcard:hover .sfcard-icon-wrap svg{stroke:#fff}
-.sfcard-body{padding:28px;display:flex;flex-direction:column;flex:1}
-.sfcard-icon-wrap{width:48px;height:48px;border-radius:13px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:var(--t);flex-shrink:0}
-.sfcard-icon-wrap svg{width:22px;height:22px;stroke:var(--green-darker);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:var(--t)}
-.sfcard-body h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:8px;letter-spacing:-.01em}
-.sfcard-body p{font-size:13px;color:var(--gray-500);line-height:1.7;margin-bottom:16px}
-.sf-feats{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto}
-.sf-feats li{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-600)}
-.sf-feats li::before{content:'';width:16px;height:16px;min-width:16px;border-radius:5px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316A34A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
-.sf-feats{list-style:none;display:flex;flex-direction:column;gap:6px}
-.sf-feats li{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-600)}
-.sf-feats li::before{content:'✓';color:var(--green-dark);font-weight:700}
-/* ====== ADDITIONAL SERVICES ====== */
-.add-sec{background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-2xl);padding:56px 52px;margin-bottom:56px}
-.add-sec-hdr{text-align:center;margin-bottom:44px}
-.add-sec-hdr .eyebrow{justify-content:center}
-.add-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.add-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px 20px;display:flex;flex-direction:column;gap:0;transition:var(--t);position:relative;overflow:hidden}
-.add-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--green-dark));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
-.add-card:hover{border-color:var(--green-light);box-shadow:0 8px 28px var(--green-glow);transform:translateY(-4px)}
-.add-card:hover::before{transform:scaleX(1)}
-.add-card:hover .add-icon-wrap{background:var(--green);border-color:var(--green)}
-.add-card:hover .add-icon-wrap svg{stroke:#fff}
-.add-icon-wrap{width:42px;height:42px;border-radius:11px;background:var(--green-pale);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:var(--t);flex-shrink:0}
-.add-icon-wrap svg{width:19px;height:19px;stroke:var(--green-darker);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:var(--t)}
-.add-nm{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:6px;letter-spacing:-.01em}
-.add-dsc{font-size:12px;color:var(--gray-500);line-height:1.65}
-@media(max-width:1024px){.add-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.add-sec{padding:36px 24px}.add-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.add-grid{grid-template-columns:1fr}}
-
-/* ====== CONTACT PAGE ====== */
-.cp-hero{max-width:700px;margin:0 auto;padding:136px 24px 56px;text-align:center}
-.cp-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1240px;margin:0 auto;padding:0 24px 96px}
-.cform{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-xl);padding:44px}
-.cform h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:26px;color:var(--gray-900)}
-.fg{margin-bottom:16px}
-.flbl{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
-.finput,.fsel,.ftxt{width:100%;padding:12px 15px;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--gray-900);transition:var(--t);outline:none;appearance:none}
-.finput:focus,.fsel:focus,.ftxt:focus{border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px var(--green-glow2)}
-.ftxt{height:100px;resize:vertical}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cinfo-stack{display:flex;flex-direction:column;gap:14px}
-.ci-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:26px;transition:var(--t)}
-.ci-card:hover{border-color:var(--green-light)}
-.ci-ico{font-size:26px;margin-bottom:10px}
-.ci-card h3{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:5px}
-.ci-card p{font-size:12px;color:var(--gray-500);line-height:1.7}
-.wa-btn{background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:var(--radius-lg);padding:22px 26px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:var(--t);width:100%}
-.wa-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(37,211,102,.35)}
-.wa-ico{font-size:30px}
-.wa-text strong{display:block;font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;text-align:left}
-.wa-text span{font-size:12px;color:rgba(255,255,255,.75);text-align:left;display:block}
-.map-ph{background:var(--gray-100);border:1px solid var(--gray-200);border-radius:var(--radius-lg);height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px}
-.map-ph span{font-size:28px}
-.map-ph p{font-size:12px;color:var(--gray-400);font-weight:500}
-
-/* ====== REVEAL ANIMATIONS ====== */
-.reveal,.reveal-l,.reveal-r{opacity:0;transition:opacity .75s var(--ease),transform .75s var(--ease)}
-.reveal{transform:translateY(34px)}.reveal-l{transform:translateX(-34px)}.reveal-r{transform:translateX(34px)}
-.reveal.in,.reveal-l.in,.reveal-r.in{opacity:1;transform:none}
-.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
-.stagger.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.11s}
-.stagger.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.17s}
-.stagger.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.23s}
-.stagger.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.29s}
-.stagger.in>*:nth-child(6){opacity:1;transform:none;transition-delay:.35s}
-.stagger.in>*:nth-child(7){opacity:1;transform:none;transition-delay:.41s}
-.stagger.in>*:nth-child(8){opacity:1;transform:none;transition-delay:.47s}
-.stagger.in>*:nth-child(9){opacity:1;transform:none;transition-delay:.53s}
-.stagger.in>*:nth-child(10){opacity:1;transform:none;transition-delay:.59s}
-.stagger.in>*:nth-child(11){opacity:1;transform:none;transition-delay:.65s}
-.stagger.in>*:nth-child(12){opacity:1;transform:none;transition-delay:.71s}
-
-/* ====== RESPONSIVE ====== */
-@media(max-width:1024px){
-  .split-sec{grid-template-columns:1fr;align-items:stretch}
-  .split-l{position:relative;height:auto;min-height:unset;padding:52px 36px;align-self:auto}
-  .ft-top{grid-template-columns:1fr 1fr;gap:36px}
-  .about-grid{grid-template-columns:1fr}
-  .about-vis{display:none}
-  .ben-grid{grid-template-columns:1fr}
-  .ben-badge2{display:none}
-  .timeline{grid-template-columns:1fr 1fr;gap:36px}
-  .tl-line-bg,.tl-progress{display:none}
-  .step-detail.show{grid-template-columns:1fr}
-  .proc-hdr{grid-template-columns:1fr;gap:18px}
-  .ap-hero{grid-template-columns:1fr;padding-top:116px}
-  .cp-layout{grid-template-columns:1fr}
-  .ind-grid{grid-template-columns:repeat(2,1fr)}
-  .ind-card{grid-column:span 1}
-  .vals-grid{grid-template-columns:1fr 1fr}
-  .sf-grid{grid-template-columns:repeat(2,1fr)}
-  .clients-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:768px){
-  nav{width:calc(100% - 28px);padding:11px 12px 11px 14px}
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .nav-hamburger{display:flex}
-  .nav-logo-text b{font-size:12px}
-  .hero-body{padding:108px 20px 36px}
-  .hero-stats{flex-wrap:wrap}
-  .hstat{padding:10px 18px;border-right:none;border-top:1px solid rgba(255,255,255,.08);flex:1 1 48%}
-  .hstat:nth-child(2n){border-right:1px solid rgba(255,255,255,.08)}
-  .sec{padding:64px 20px}
-  .clients-wrap{padding:32px 20px}
-  .clients-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .pain-grid{grid-template-columns:1fr;gap:14px}
-  .rev-wrap{padding:44px 24px;border-radius:var(--radius-xl)}
-  .r-card{flex:0 0 100%}
-  .ft-top{grid-template-columns:1fr;gap:28px}
-  .ft-bot{flex-direction:column;text-align:center}
-  .cta-banner{padding:52px 26px;border-radius:var(--radius-xl)}
-  .cta-btns{flex-direction:column;align-items:center}
-  .split-r{padding:36px 20px}
-  .timeline{grid-template-columns:1fr;gap:28px}
-  .step{padding:0}
-  .step-detail.show{grid-template-columns:1fr}
-  .ap-hero{padding:108px 20px 56px}
-  .sp-hero{padding:108px 20px 52px}
-  .cp-hero{padding:108px 20px 44px}
-  .cform{padding:30px 22px}
-  .vals-grid{grid-template-columns:1fr}
-  .sf-grid{grid-template-columns:1fr}
-  .frow{grid-template-columns:1fr}
-  .clients-stats{gap:14px;flex-direction:column;align-items:center}
-  .proc-in{padding:64px 20px}
-  .ben-grid{gap:36px}
-}
-@media(max-width:480px){
-  .clients-grid{grid-template-columns:1fr 1fr}
-  .hstat{flex:1 1 100%;border-right:none!important}
-  .hero-stats{border-top:1px solid rgba(255,255,255,.08);padding-top:28px}
-  .cta-banner{padding:44px 20px}
-  .rev-wrap{padding:36px 18px}
-  .r-card{padding:24px}
-  .ind-grid{grid-template-columns:1fr 1fr}
-  .ind-card{grid-column:span 1}}
-
-  /* ====== REVIEW FORM ====== */
-  .rev-form-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius-xl);padding:32px;margin-bottom:28px}
-  .rev-form-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:20px}
-  .rev-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-  .rev-finput{width:100%;padding:11px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:#fff;outline:none;transition:var(--t)}
-  .rev-finput::placeholder{color:rgba(255,255,255,.3)}
-  .rev-finput:focus{border-color:var(--green);background:rgba(255,255,255,.09);box-shadow:0 0 0 3px rgba(74,222,128,.1)}
-  .rev-ftxt{width:100%;padding:11px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:#fff;outline:none;resize:vertical;height:88px;transition:var(--t);margin-bottom:12px}
-  .rev-ftxt::placeholder{color:rgba(255,255,255,.3)}
-  .rev-ftxt:focus{border-color:var(--green);background:rgba(255,255,255,.09)}
-  .rev-star-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-  .rev-star-lbl{font-size:12px;color:rgba(255,255,255,.45);font-weight:600}
-  .rev-stars-sel{display:flex;gap:4px}
-  .rev-star{font-size:22px;cursor:pointer;opacity:.3;transition:opacity .2s,transform .2s;line-height:1}
-  .rev-star.on,.rev-star:hover{opacity:1;transform:scale(1.15)}
-  .rev-submit{padding:11px 24px;background:var(--green);color:var(--gray-900);border:none;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;transition:var(--t);font-family:inherit}
-  .rev-submit:hover{background:var(--green-dark);transform:translateY(-1px)}
-  .rev-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-  .rev-form-msg{font-size:12px;margin-top:10px;padding:10px 14px;border-radius:10px;display:none}
-  .rev-form-msg.ok{background:rgba(74,222,128,.12);color:var(--green);border:1px solid rgba(74,222,128,.2);display:block}
-  .rev-form-msg.err{background:rgba(220,38,38,.1);color:#f87171;border:1px solid rgba(220,38,38,.2);display:block}
-  .rev-empty{text-align:center;color:rgba(255,255,255,.3);font-size:13px;padding:32px 0}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House of Panache | Premium Uniform Design &amp; Manufacturing UAE</title>
+  <meta name="description" content="UAE's leading uniform design and manufacturing company with 30+ years of experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ====== NAV ====== -->
+<!-- ====== FLOATING NAV ====== -->
 <nav id="navbar">
   <div class="nav-logo" onclick="go('home')">
-               <img class="nav-logo-img" src="images/logo.png" alt="House of Panache">
-<div class="nav-logo-mark"></div>
+    <img class="nav-logo-img" src="images/logo.png" alt="House of Panache">
+    <div class="nav-logo-mark"></div>
     <div class="nav-logo-text">
       <b>House of Panache</b>
       <span>Tailoring Brilliance · UAE</span>
@@ -587,6 +34,7 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
   </button>
 </nav>
 
+<!-- Mobile Menu -->
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" onclick="closeMob()">✕</button>
   <button class="mob-link" onclick="go('home');closeMob()">Home</button>
@@ -596,39 +44,60 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
   <button class="btn btn-prim" style="margin-top:16px;width:100%;justify-content:center;padding:16px;" onclick="go('contact');closeMob()">Get Free Consultation</button>
 </div>
 
-<!-- =================== HOME =================== -->
+
+<!-- =========================================================
+     HOME PAGE
+     ========================================================= -->
 <div id="page-home" class="page active">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg">
-      <!-- <img class="hero-bg-media" src="images/herosection.jpg" alt="House of Panache uniform manufacturing"> -->
-      <video class="hero-bg-media" autoplay muted loop playsinline preload="auto" poster="images/herosection.jpg">
-        <source src="videos/hop.webm" type="video/webm">
-        <source src="videos/hop.mp4" type="video/mp4">
-      </video>
-      <div class="hero-grad"></div>
-      <div class="hero-grid-bg"></div>
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-    </div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-grain"></div>
+    <div class="hero-grad"></div>
+
     <div class="hero-body">
       <div class="hero-badge">
         <div class="hero-badge-dot">
-          <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:var(--gray-900);stroke:none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:var(--gray-900);stroke:none">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
         </div>
         <span>UAE's Leading Uniform Manufacturer</span>
       </div>
-      <h1 class="hero-h1">We Design &amp; Manufacture<br><span class="ital">Premium Uniforms</span><br>That Elevate Your Brand</h1>
-        <p class="hero-sub">30+ years of precision craftsmanship across the UAE — corporate, medical, hospitality, industrial, and beyond.</p>      <div class="hero-btns">
+
+      <h1 class="hero-h1">
+        We Design &amp; Manufacture<br>
+        <span class="ital">Premium Uniforms</span><br>
+        That Elevate Your Brand
+      </h1>
+
+      <p class="hero-sub">
+        30+ years of precision craftsmanship across the UAE — corporate, medical, hospitality, industrial, and beyond.
+      </p>
+
+      <div class="hero-btns">
         <button class="btn-hp btn-green" onclick="go('contact')">Get a Free Consultation</button>
         <button class="btn-hp btn-ghost" onclick="go('services')">Explore Our Services ↓</button>
       </div>
+
       <div class="hero-stats">
-        <div class="hstat"><div class="hstat-n">30<span>+</span></div><div class="hstat-l">Years of Excellence</div></div>
-        <div class="hstat"><div class="hstat-n">500<span>+</span></div><div class="hstat-l">Happy Clients</div></div>
-        <div class="hstat"><div class="hstat-n">8</div><div class="hstat-l">Industry Categories</div></div>
-        <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l">Emirates Covered</div></div>
+        <div class="hstat">
+          <div class="hstat-n">30<span>+</span></div>
+          <div class="hstat-l">Years of Excellence</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">500<span>+</span></div>
+          <div class="hstat-l">Happy Clients</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">8</div>
+          <div class="hstat-l">Industry Categories</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">7</div>
+          <div class="hstat-l">Emirates Covered</div>
+        </div>
       </div>
     </div>
   </section>
@@ -636,72 +105,74 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
   <!-- MARQUEE -->
   <div class="marquee-strip">
     <div class="marquee-track" aria-hidden="true">
-      <div class="mq-item"><span>✓</span> Corporate Uniforms</div>
-      <div class="mq-item"><span>✓</span> Sports &amp; Fitness Wear</div>
-      <div class="mq-item"><span>✓</span> Medical Scrubs</div>
-      <div class="mq-item"><span>✓</span> Hospitality Wear</div>
-      <div class="mq-item"><span>✓</span> Security Uniforms</div>
-      <div class="mq-item"><span>✓</span> Salon &amp; Spa</div>
-      <div class="mq-item"><span>✓</span> Custom Embroidery</div>
-      <div class="mq-item"><span>✓</span> Bulk Manufacturing</div>
-      <div class="mq-item"><span>✓</span> UAE-Wide Delivery</div>
+      <div class="mq-item"><span>✦</span> Corporate Uniforms</div>
+      <div class="mq-item"><span>✦</span> Sports &amp; Fitness Wear</div>
+      <div class="mq-item"><span>✦</span> Medical Scrubs</div>
+      <div class="mq-item"><span>✦</span> Hospitality Wear</div>
+      <div class="mq-item"><span>✦</span> Security Uniforms</div>
+      <div class="mq-item"><span>✦</span> Salon &amp; Spa</div>
+      <div class="mq-item"><span>✦</span> Custom Embroidery</div>
+      <div class="mq-item"><span>✦</span> Bulk Manufacturing</div>
+      <div class="mq-item"><span>✦</span> UAE-Wide Delivery</div>
       <!-- Duplicate for seamless loop -->
-      <div class="mq-item"><span>✓</span> Corporate Uniforms</div>
-      <div class="mq-item"><span>✓</span> Sports &amp; Fitness Wear</div>
-      <div class="mq-item"><span>✓</span> Medical Scrubs</div>
-      <div class="mq-item"><span>✓</span> Hospitality Wear</div>
-      <div class="mq-item"><span>✓</span> Security Uniforms</div>
-      <div class="mq-item"><span>✓</span> Salon &amp; Spa</div>
-      <div class="mq-item"><span>✓</span> Custom Embroidery</div>
-      <div class="mq-item"><span>✓</span> Bulk Manufacturing</div>
-      <div class="mq-item"><span>✓</span> UAE-Wide Delivery</div>
+      <div class="mq-item"><span>✦</span> Corporate Uniforms</div>
+      <div class="mq-item"><span>✦</span> Sports &amp; Fitness Wear</div>
+      <div class="mq-item"><span>✦</span> Medical Scrubs</div>
+      <div class="mq-item"><span>✦</span> Hospitality Wear</div>
+      <div class="mq-item"><span>✦</span> Security Uniforms</div>
+      <div class="mq-item"><span>✦</span> Salon &amp; Spa</div>
+      <div class="mq-item"><span>✦</span> Custom Embroidery</div>
+      <div class="mq-item"><span>✦</span> Bulk Manufacturing</div>
+      <div class="mq-item"><span>✦</span> UAE-Wide Delivery</div>
     </div>
   </div>
 
   <!-- CLIENTS -->
-  <div style="padding:80px 24px 0;max-width:1240px;margin:0 auto;">
+  <div style="padding:80px 28px 0;max-width:1240px;margin:0 auto;">
     <div class="clients-wrap reveal">
       <div class="clients-top">
         <div class="clients-label">Trusted By</div>
-        <div class="clients-title">Brands That Wear <span style="color:var(--green-darker);font-style:italic;">House of Panache</span></div>
+        <div class="clients-title">Brands That Wear <span style="color:var(--green-dark);font-style:italic;">House of Panache</span></div>
       </div>
+
       <div class="clients-grid stagger">
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/Alici.png" alt="Alici Sea Food Restaurant">
-    <div class="cl-name">Alici</div>
-    <div class="cl-ind">Restaurant</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/gyneco.png" alt="Gýneco">
-    <div class="cl-name">Gýneco</div>
-    <div class="cl-ind">Healthcare</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/barberia.png" alt="Saloon">
-    <div class="cl-name">Barberia Italiana</div>
-    <div class="cl-ind">Salon</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/mayabay.png" alt="MayaBay">
-    <div class="cl-name">MayaBay</div>
-    <div class="cl-ind">Restaurant</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/eternaljewels.png" alt="Eternal Jewels">
-    <div class="cl-name">Eternal Jewels</div>
-    <div class="cl-ind">Retail</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/manaret.png" alt="Manaret Beirut">
-    <div class="cl-name">Manaret Beirut</div>
-    <div class="cl-ind">Restaurant</div>
-  </div>
-  <div class="client-card">
-    <img class="cl-logo" src="images/clients/KaakAlManara.png" alt="Kaak Al Manara">
-    <div class="cl-name">Kaak Al Manara</div>
-    <div class="cl-ind">Bakery & Cafe</div>
-  </div>
-</div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/Alici.png" alt="Alici Sea Food Restaurant">
+          <div class="cl-name">Alici</div>
+          <div class="cl-ind">Restaurant</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/gyneco.png" alt="Gýneco">
+          <div class="cl-name">Gýneco</div>
+          <div class="cl-ind">Healthcare</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/barberia.png" alt="Barberia Italiana">
+          <div class="cl-name">Barberia Italiana</div>
+          <div class="cl-ind">Salon</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/mayabay.png" alt="MayaBay">
+          <div class="cl-name">MayaBay</div>
+          <div class="cl-ind">Restaurant</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/eternaljewels.png" alt="Eternal Jewels">
+          <div class="cl-name">Eternal Jewels</div>
+          <div class="cl-ind">Retail</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/manaret.png" alt="Manaret Beirut">
+          <div class="cl-name">Manaret Beirut</div>
+          <div class="cl-ind">Restaurant</div>
+        </div>
+        <div class="client-card">
+          <img class="cl-logo" src="images/clients/KaakAlManara.png" alt="Kaak Al Manara">
+          <div class="cl-name">Kaak Al Manara</div>
+          <div class="cl-ind">Bakery &amp; Cafe</div>
+        </div>
+      </div>
+
       <div class="clients-stats">
         <div class="cstat">
           <div class="cstat-ic">
@@ -721,12 +192,6 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
           </div>
           <div><strong>98%</strong> on-time delivery</div>
         </div>
-        <!-- <div class="cstat">
-          <div class="cstat-ic">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>ISO quality certified</div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -736,44 +201,44 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
     <div class="reveal" style="text-align:center;margin-bottom:48px;">
       <div class="eyebrow">The Challenge</div>
       <h2 class="sh">Sound Familiar?</h2>
-      <p style="font-size:15px;color:var(--gray-500);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.75;">Common uniform problems costing UAE businesses time, money, and brand reputation.</p>
+      <p style="font-size:15px;color:var(--gray-500);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.78;">Common uniform problems costing UAE businesses time, money, and brand reputation.</p>
     </div>
     <div class="pain-grid stagger">
-     <div class="pain-card">
-  <div class="pain-icon-wrap">
-    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-  </div>
-  <div class="pain-num">Problem 01</div>
-  <h3 class="pain-ttl">Inconsistent Uniform Quality</h3>
-  <p class="pain-txt">Quality varies batch to batch — damaging brand image and staff morale. Our multi-stage QC process ensures every single garment meets the same premium standard.</p>
-</div>
-<div class="pain-card">
-  <div class="pain-icon-wrap">
-    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-  </div>
-  <div class="pain-num">Problem 02</div>
-  <h3 class="pain-ttl">Poor Fit &amp; Comfort</h3>
-  <p class="pain-txt">Ill-fitting uniforms reduce productivity and professional appearance. We offer precise custom sizing across all body types for a perfect, comfortable fit every time.</p>
-</div>
-<div class="pain-card">
-  <div class="pain-icon-wrap">
-    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-  </div>
-  <div class="pain-num">Problem 03</div>
-    <h3 class="pain-ttl">Delayed Bulk Deliveries</h3>
-    <p class="pain-txt">Late deliveries disrupt operations and onboarding. Our advanced in-house production and UAE-wide logistics guarantee on-time delivery — every order, every time.</p>
-  </div>
+      <div class="pain-card">
+        <div class="pain-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pain-num">Problem 01</div>
+        <h3 class="pain-ttl">Inconsistent Uniform Quality</h3>
+        <p class="pain-txt">Quality varies batch to batch — damaging brand image and staff morale. Our multi-stage QC process ensures every single garment meets the same premium standard.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="pain-num">Problem 02</div>
+        <h3 class="pain-ttl">Poor Fit &amp; Comfort</h3>
+        <p class="pain-txt">Ill-fitting uniforms reduce productivity and professional appearance. We offer precise custom sizing across all body types for a perfect, comfortable fit every time.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="pain-num">Problem 03</div>
+        <h3 class="pain-ttl">Delayed Bulk Deliveries</h3>
+        <p class="pain-txt">Late deliveries disrupt operations and onboarding. Our advanced in-house production and UAE-wide logistics guarantee on-time delivery — every order, every time.</p>
+      </div>
     </div>
   </div>
 
   <!-- BENEFITS -->
-  <div style="padding:0 24px 96px;max-width:1240px;margin:0 auto;">
-    <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-2xl);padding:64px 56px;">
+  <div style="padding:0 28px 96px;max-width:1240px;margin:0 auto;">
+    <div style="background:rgba(255,255,255,0.65);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(255,255,255,0.82);border-radius:var(--radius-3xl);padding:64px 56px;box-shadow:0 4px 24px rgba(44,41,36,0.08),0 1px 0 rgba(255,255,255,0.9) inset;">
       <div class="ben-grid">
         <div class="reveal-l">
           <div class="eyebrow">Why Choose Us</div>
           <h2 class="sh">Why UAE Businesses<br>Trust <span class="g">House of Panache</span></h2>
-          <p style="font-size:14px;color:var(--gray-500);line-height:1.85;margin:18px 0 24px;">Three decades of expertise, premium materials, and unmatched attention to detail — delivering uniforms that represent your brand at its finest.</p>
+          <p style="font-size:14px;color:var(--gray-500);line-height:1.88;margin:18px 0 24px;">Three decades of expertise, premium materials, and unmatched attention to detail — delivering uniforms that represent your brand at its finest.</p>
           <ul class="ben-list">
             <li class="ben-item"><div class="ben-chk">✓</div><div class="ben-txt"><strong>30+ Years of Experience</strong><span>Unmatched local expertise &amp; craftsmanship</span></div></li>
             <li class="ben-item"><div class="ben-chk">✓</div><div class="ben-txt"><strong>Premium Certified Fabrics</strong><span>Sourced from trusted international suppliers</span></div></li>
@@ -788,51 +253,75 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
         </div>
         <div class="ben-visual reveal-r">
           <div class="ben-vis-in">
-           <img src="images/whychooseus.jpg" alt="Precision tailoring at House of Panache">
+            <img src="images/whychooseus.jpeg" alt="Precision tailoring at House of Panache">
             <div class="ben-vis-overlay"></div>
             <div class="ben-lbl">Where precision tailoring meets brand excellence</div>
           </div>
-          <!-- <div class="ben-badge"><div class="nn">30<span style="font-size:16px;">+</span></div><div class="ll">Years of<br>Excellence</div></div> -->
           <div class="ben-badge2"><div class="nn">500+</div><div class="ll">Happy<br>Clients</div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PROCESS WORKFLOW — CINEMATIC INTERACTIVE TIMELINE -->
+  <!-- PROCESS WORKFLOW -->
   <section class="proc-sec">
     <div class="proc-in">
       <div class="proc-hdr">
         <div>
-          <div class="eyebrow" style="color:var(--green);">Our Process</div>
-          <h2 class="sh" style="color:#fff;">From Vision<br>to <span style="color:var(--green-dark);font-style:italic;">Delivery</span></h2>
+          <div class="eyebrow" style="color:var(--green-light);">Our Process</div>
+          <h2 class="sh" style="color:#fff;">From Vision<br>to <span style="color:var(--green-light);font-style:italic;">Delivery</span></h2>
         </div>
         <div class="proc-hdr-r">Click each step to explore what happens behind the scenes. Every stage is designed for transparency, quality, and a seamless experience from first call to final delivery.</div>
       </div>
+
       <div style="position:relative;">
         <div class="timeline" id="timeline">
           <div class="tl-line-bg"></div>
           <div class="tl-progress" id="tlProg"></div>
+
           <div class="step active" id="step-0" onclick="activateStep(0)">
-            <div class="step-circ"><div class="step-ico-in"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="step-num">01</div></div>
+            <div class="step-circ">
+              <div class="step-ico-in">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <div class="step-num">01</div>
+            </div>
             <div class="step-tag">Phase One</div>
             <div class="step-ttl">Consultation &amp; Measurement</div>
             <div class="step-dsc">We deeply understand your brand, team size, and functional needs — then take precise measurements for every role.</div>
           </div>
+
           <div class="step" id="step-1" onclick="activateStep(1)">
-            <div class="step-circ"><div class="step-ico-in"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="step-num">02</div></div>
+            <div class="step-circ">
+              <div class="step-ico-in">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <div class="step-num">02</div>
+            </div>
             <div class="step-tag">Phase Two</div>
             <div class="step-ttl">Custom Design &amp; Prototype</div>
             <div class="step-dsc">Our designers create tailored concepts with your brand identity. A physical prototype is approved before full production begins.</div>
           </div>
+
           <div class="step" id="step-2" onclick="activateStep(2)">
-            <div class="step-circ"><div class="step-ico-in"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M2 20h20M4 20V10l6-4v4l6-4v14"/><rect x="9" y="14" width="6" height="6"/></svg></div><div class="step-num">03</div></div>
+            <div class="step-circ">
+              <div class="step-ico-in">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M2 20h20M4 20V10l6-4v4l6-4v14"/><rect x="9" y="14" width="6" height="6"/></svg>
+              </div>
+              <div class="step-num">03</div>
+            </div>
             <div class="step-tag">Phase Three</div>
             <div class="step-ttl">Production &amp; Quality Control</div>
             <div class="step-dsc">In-house manufacturing using premium fabrics. Every garment passes a rigorous 12-point quality check before leaving our facility.</div>
           </div>
+
           <div class="step" id="step-3" onclick="activateStep(3)">
-            <div class="step-circ"><div class="step-ico-in"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12H2s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M19 12h3s-.55-3.03-2-4c-1.62-1.08-5 0-5 0"/><path d="M12 2s4 2 4 8-4 12-4 12-4-6-4-12 4-8 4-8z"/><circle cx="12" cy="10" r="2"/></svg></div><div class="step-num">04</div></div>
+            <div class="step-circ">
+              <div class="step-ico-in">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12H2s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M19 12h3s-.55-3.03-2-4c-1.62-1.08-5 0-5 0"/><path d="M12 2s4 2 4 8-4 12-4 12-4-6-4-12 4-8 4-8z"/><circle cx="12" cy="10" r="2"/></svg>
+              </div>
+              <div class="step-num">04</div>
+            </div>
             <div class="step-tag">Phase Four</div>
             <div class="step-ttl">Delivery &amp; Support</div>
             <div class="step-dsc">On-time delivery across all UAE Emirates, with ongoing inventory management and aftercare to keep your team uniformed.</div>
@@ -840,6 +329,7 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
         </div>
         <div class="step-detail" id="stepDetail"></div>
       </div>
+
       <div style="text-align:center;margin-top:52px;">
         <button class="btn-hp btn-green" onclick="go('contact')">Start Your Uniform Journey Today →</button>
       </div>
@@ -847,14 +337,14 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
   </section>
 
   <!-- SERVICES SPLIT -->
-<div class="split-sec" style="overflow:visible;align-items:start;">
-      <div class="split-l">
-          <img class="split-l-img" src="images/ourservices.jpg" alt="House of Panache uniform craftsmanship">
-          <div class="split-l-overlay"></div>
-          <div class="split-noise"></div>
-          <div class="split-glow"></div>
-          <div class="split-con">
-        <div class="eyebrow" style="color:var(--green);">Our Services</div>
+  <div class="split-sec" style="overflow:visible;align-items:start;">
+    <div class="split-l">
+      <img class="split-l-img" src="images/ourservices.jpeg" alt="House of Panache uniform craftsmanship">
+      <div class="split-l-overlay"></div>
+      <div class="split-noise"></div>
+      <div class="split-glow"></div>
+      <div class="split-con">
+        <div class="eyebrow" style="color:var(--green-light);">Our Services</div>
         <h2 class="split-h">Crafted for<br><span class="g">Every Industry</span></h2>
         <p class="split-sub">From boardrooms to hospital wards — premium uniforms designed to set the standard in every sector of the UAE economy.</p>
         <div class="split-pills">
@@ -868,46 +358,49 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
         <button class="btn-hp btn-green" onclick="go('services')">View All Services</button>
       </div>
     </div>
+
     <div class="split-r">
       <div class="split-r-hdr">
-        <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gray-900);">What We Offer</h3>
+        <h3 style="font-family:var(--font-display);font-size:26px;font-weight:500;color:var(--gray-900);letter-spacing:-0.02em;">What We Offer</h3>
         <p style="font-size:13px;color:var(--gray-500);margin-top:6px;">End-to-end uniform solutions built around your brand.</p>
       </div>
+
       <div class="svc-card">
-  <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-  <div><div class="svc-ttl">Custom Uniform Design</div><div class="svc-dsc">End-to-end bespoke design translating your brand identity into precision-crafted uniform concepts.</div><div class="svc-tags"><span class="svc-tag">Brand Integration</span><span class="svc-tag">CAD Design</span></div></div>
-  <div class="svc-arr">→</div>
-</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div><div class="svc-ttl">Custom Uniform Design</div><div class="svc-dsc">End-to-end bespoke design translating your brand identity into precision-crafted uniform concepts.</div><div class="svc-tags"><span class="svc-tag">Brand Integration</span><span class="svc-tag">CAD Design</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
 
-    <div class="svc-card">
-      <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
-      <div><div class="svc-ttl">Bespoke Tailoring</div><div class="svc-dsc">Individual precision tailoring for executives and staff who demand the perfect fit and finish.</div><div class="svc-tags"><span class="svc-tag">Master Tailors</span><span class="svc-tag">Custom Sizing</span></div></div>
-      <div class="svc-arr">→</div>
-    </div>
+      <div class="svc-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+        <div><div class="svc-ttl">Bespoke Tailoring</div><div class="svc-dsc">Individual precision tailoring for executives and staff who demand the perfect fit and finish.</div><div class="svc-tags"><span class="svc-tag">Master Tailors</span><span class="svc-tag">Custom Sizing</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
 
-    <div class="svc-card">
-      <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg></div>
-      <div><div class="svc-ttl">Bulk Manufacturing</div><div class="svc-dsc">Scalable in-house production from 10 to 10,000+ pieces with consistent quality at every scale.</div><div class="svc-tags"><span class="svc-tag">Min 10 pieces</span><span class="svc-tag">QC Guaranteed</span></div></div>
-      <div class="svc-arr">→</div>
-    </div>
+      <div class="svc-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg></div>
+        <div><div class="svc-ttl">Bulk Manufacturing</div><div class="svc-dsc">Scalable in-house production from 10 to 10,000+ pieces with consistent quality at every scale.</div><div class="svc-tags"><span class="svc-tag">Min 10 pieces</span><span class="svc-tag">QC Guaranteed</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
 
-    <div class="svc-card">
-      <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
-      <div><div class="svc-ttl">Embroidery &amp; Printing</div><div class="svc-dsc">Durable logo application via embroidery, screen printing, and heat transfer — Pantone matched.</div><div class="svc-tags"><span class="svc-tag">Pantone Matched</span><span class="svc-tag">Wash Resistant</span></div></div>
-      <div class="svc-arr">→</div>
-    </div>
+      <div class="svc-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+        <div><div class="svc-ttl">Embroidery &amp; Printing</div><div class="svc-dsc">Durable logo application via embroidery, screen printing, and heat transfer — Pantone matched.</div><div class="svc-tags"><span class="svc-tag">Pantone Matched</span><span class="svc-tag">Wash Resistant</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
 
-    <div class="svc-card">
-      <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-      <div><div class="svc-ttl">Inventory Management</div><div class="svc-dsc">Ongoing supply management including stock monitoring, replenishment, and new-hire onboarding packs.</div><div class="svc-tags"><span class="svc-tag">Managed Stock</span><span class="svc-tag">Annual Audit</span></div></div>
-      <div class="svc-arr">→</div>
-    </div>
+      <div class="svc-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div><div class="svc-ttl">Inventory Management</div><div class="svc-dsc">Ongoing supply management including stock monitoring, replenishment, and new-hire onboarding packs.</div><div class="svc-tags"><span class="svc-tag">Managed Stock</span><span class="svc-tag">Annual Audit</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
 
-    <div class="svc-card">
-      <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <div><div class="svc-ttl">Dedicated Account Support</div><div class="svc-dsc">A dedicated account manager from consultation through delivery and aftercare — always available.</div><div class="svc-tags"><span class="svc-tag">WhatsApp Support</span><span class="svc-tag">24h Response</span></div></div>
-      <div class="svc-arr">→</div>
-    </div>
+      <div class="svc-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="svc-ttl">Dedicated Account Support</div><div class="svc-dsc">A dedicated account manager from consultation through delivery and aftercare — always available.</div><div class="svc-tags"><span class="svc-tag">WhatsApp Support</span><span class="svc-tag">24h Response</span></div></div>
+        <div class="svc-arr">→</div>
+      </div>
+
       <div style="text-align:center;padding:10px 0 6px;">
         <button class="btn btn-prim" onclick="go('services')">Explore All Services →</button>
       </div>
@@ -916,23 +409,22 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
 
   <!-- ABOUT SNIPPET -->
   <div class="sec">
-    <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-2xl);padding:64px 56px;">
+    <div style="background:rgba(255,255,255,0.65);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(255,255,255,0.82);border-radius:var(--radius-3xl);padding:64px 56px;box-shadow:0 4px 24px rgba(44,41,36,0.08),0 1px 0 rgba(255,255,255,0.9) inset;">
       <div class="about-grid">
         <div class="about-vis">
           <div class="aimg">
-            <img src="images/ourstory.jpg" alt="House of Panache tailoring craftsmanship">
+            <img src="images/ourstory.jpeg" alt="House of Panache tailoring craftsmanship">
             <div class="aimg-overlay"></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;text-align:center;padding:0 36px;line-height:1.65;position:relative;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Three decades of crafting UAE's finest uniforms</div>
+            <div style="font-family:var(--font-display);font-size:14px;font-style:italic;font-weight:400;color:rgba(255,255,255,0.88);text-align:center;padding:0 36px;line-height:1.65;position:relative;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Three decades of crafting UAE's finest uniforms</div>
           </div>
           <div class="a-yr"><div class="yn">30+</div><div class="yl">Years</div></div>
-          <!-- <div class="a-mini"><div class="n">500+</div><div class="l">Clients Across UAE</div></div> -->
         </div>
         <div class="reveal-r">
           <div class="eyebrow">Our Story</div>
           <h2 class="sh">Over Three Decades of <span class="g">Crafting Excellence</span></h2>
-          <p style="font-size:14px;color:var(--gray-500);line-height:1.85;margin:18px 0 14px;">House of Panache was founded with a singular vision: to bring world-class uniform design and manufacturing to the UAE. What began as a small tailoring workshop grew into a full-scale operation serving hundreds of organisations across every sector.</p>
+          <p style="font-size:14px;color:var(--gray-500);line-height:1.88;margin:18px 0 14px;">House of Panache was founded with a singular vision: to bring world-class uniform design and manufacturing to the UAE. What began as a small tailoring workshop grew into a full-scale operation serving hundreds of organisations across every sector.</p>
           <blockquote class="about-quote">"Every uniform we craft is a testament to our commitment to quality, precision, and the businesses who trust us with their brand."</blockquote>
-          <p style="font-size:14px;color:var(--gray-500);line-height:1.85;margin-bottom:24px;">Our in-house facility, creative design studio, and dedicated QA team work in harmony to deliver a seamless experience from consultation to final delivery.</p>
+          <p style="font-size:14px;color:var(--gray-500);line-height:1.88;margin-bottom:24px;">Our in-house facility, creative design studio, and dedicated QA team work in harmony to deliver a seamless experience from consultation to final delivery.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <button class="btn btn-prim" onclick="go('about')">Learn More About Us</button>
             <button class="btn btn-out" onclick="go('contact')">Get in Touch</button>
@@ -942,53 +434,56 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
     </div>
   </div>
 
-<!-- TESTIMONIALS -->
-<div style="padding:0 24px 96px;max-width:1240px;margin:0 auto;">
-  <div class="rev-wrap">
-    <div class="rev-top">
-      <div>
-        <div class="eyebrow" style="color:var(--green);">Testimonials</div>
-        <h2 class="sh" style="color:#fff;">What Our<br>Clients <span class="g">Say</span></h2>
-      </div>
-      <div class="rev-ctrls">
-        <button class="r-btn" onclick="moveRev(-1)">←</button>
-        <button class="r-btn" onclick="moveRev(1)">→</button>
-      </div>
-    </div>
-
-    <!-- Review submission form -->
-    <div class="rev-form-wrap">
-      <div class="rev-form-title" style="display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Share Your Experience</div>
-      <div class="rev-form-grid">
-        <input id="rv-name" class="rev-finput" type="text" placeholder="Your Name">
-        <input id="rv-role" class="rev-finput" type="text" placeholder="Your Role & Company">
-      </div>
-      <div class="rev-star-row">
-        <span class="rev-star-lbl">Your Rating:</span>
-        <div class="rev-stars-sel" id="rvStars">
-          <span class="rev-star" data-v="1">⭐</span>
-          <span class="rev-star" data-v="2">⭐</span>
-          <span class="rev-star" data-v="3">⭐</span>
-          <span class="rev-star" data-v="4">⭐</span>
-          <span class="rev-star" data-v="5">⭐</span>
+  <!-- TESTIMONIALS -->
+  <div style="padding:0 28px 96px;max-width:1240px;margin:0 auto;">
+    <div class="rev-wrap">
+      <div class="rev-top">
+        <div>
+          <div class="eyebrow" style="color:var(--green-light);">Testimonials</div>
+          <h2 class="sh" style="color:#fff;">What Our<br>Clients <span class="g">Say</span></h2>
+        </div>
+        <div class="rev-ctrls">
+          <button class="r-btn" onclick="moveRev(-1)">←</button>
+          <button class="r-btn" onclick="moveRev(1)">→</button>
         </div>
       </div>
-      <textarea id="rv-text" class="rev-ftxt" placeholder="Tell us about your experience with House of Panache..."></textarea>
-      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-        <button class="rev-submit" id="rvSubmitBtn" onclick="submitReview()">Submit Review</button>
-        <span id="rvFormMsg" class="rev-form-msg"></span>
-      </div>
-    </div>
 
-    <!-- Reviews display -->
-    <div class="rev-slider">
-      <div class="rev-track" id="revTrack">
-        <div class="rev-empty" id="revEmpty" style="display:none;">No reviews yet — be the first!</div>
+      <!-- Review submission form -->
+      <div class="rev-form-wrap">
+        <div class="rev-form-title" style="display:flex;align-items:center;gap:8px;">
+          <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Share Your Experience
+        </div>
+        <div class="rev-form-grid">
+          <input id="rv-name" class="rev-finput" type="text" placeholder="Your Name">
+          <input id="rv-role" class="rev-finput" type="text" placeholder="Your Role &amp; Company">
+        </div>
+        <div class="rev-star-row">
+          <span class="rev-star-lbl">Your Rating:</span>
+          <div class="rev-stars-sel" id="rvStars">
+            <span class="rev-star" data-v="1">⭐</span>
+            <span class="rev-star" data-v="2">⭐</span>
+            <span class="rev-star" data-v="3">⭐</span>
+            <span class="rev-star" data-v="4">⭐</span>
+            <span class="rev-star" data-v="5">⭐</span>
+          </div>
+        </div>
+        <textarea id="rv-text" class="rev-ftxt" placeholder="Tell us about your experience with House of Panache..."></textarea>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <button class="rev-submit" id="rvSubmitBtn" onclick="submitReview()">Submit Review</button>
+          <span id="rvFormMsg" class="rev-form-msg"></span>
+        </div>
       </div>
+
+      <!-- Reviews display -->
+      <div class="rev-slider">
+        <div class="rev-track" id="revTrack">
+          <div class="rev-empty" id="revEmpty" style="display:none;">No reviews yet — be the first!</div>
+        </div>
+      </div>
+      <div class="rev-dots" id="revDots"></div>
     </div>
-    <div class="rev-dots" id="revDots"></div>
   </div>
-</div>
 
   <!-- FAQ -->
   <div class="sec" style="padding-top:0;">
@@ -997,16 +492,31 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
       <h2 class="sh">Common Questions</h2>
     </div>
     <div class="faq-grid">
-      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><span>What is the minimum order quantity?</span><div class="faq-tog">+</div></div><div class="faq-body"><div class="faq-body-in">We accommodate orders from as few as 10 pieces up to 10,000+. Our flexible system ensures the same premium quality at any scale, with competitive pricing for bulk orders.</div></div></div>
-      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><span>How long does the process take from consultation to delivery?</span><div class="faq-tog">+</div></div><div class="faq-body"><div class="faq-body-in">Standard orders take 2–4 weeks. Rush orders can be delivered within 7–10 business days. We provide a clear timeline during the initial consultation so you can plan with confidence.</div></div></div>
-      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><span>Do you offer fabric samples and prototypes before production?</span><div class="faq-tog">+</div></div><div class="faq-body"><div class="faq-body-in">Absolutely. We provide physical fabric swatches and produce a prototype garment for your approval before committing to full production — ensuring you're 100% satisfied before we scale.</div></div></div>
-      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><span>Which Emirates do you deliver to?</span><div class="faq-tog">+</div></div><div class="faq-body"><div class="faq-body-in">We deliver across all 7 Emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, and Umm Al Quwain. Collection from our facility or door-to-door delivery both available.</div></div></div>
-      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><span>Can you match our exact brand colours and add our logo?</span><div class="faq-tog">+</div></div><div class="faq-body"><div class="faq-body-in">Yes. We use Pantone/CMYK colour matching and offer logo embroidery, screen printing, and heat transfer. Our team advises on the most durable method for your fabric and uniform type.</div></div></div>
+      <div class="faq-item" onclick="tFaq(this)">
+        <div class="faq-q"><span>What is the minimum order quantity?</span><div class="faq-tog">+</div></div>
+        <div class="faq-body"><div class="faq-body-in">We accommodate orders from as few as 10 pieces up to 10,000+. Our flexible system ensures the same premium quality at any scale, with competitive pricing for bulk orders.</div></div>
+      </div>
+      <div class="faq-item" onclick="tFaq(this)">
+        <div class="faq-q"><span>How long does the process take from consultation to delivery?</span><div class="faq-tog">+</div></div>
+        <div class="faq-body"><div class="faq-body-in">Standard orders take 2–4 weeks. Rush orders can be delivered within 7–10 business days. We provide a clear timeline during the initial consultation so you can plan with confidence.</div></div>
+      </div>
+      <div class="faq-item" onclick="tFaq(this)">
+        <div class="faq-q"><span>Do you offer fabric samples and prototypes before production?</span><div class="faq-tog">+</div></div>
+        <div class="faq-body"><div class="faq-body-in">Absolutely. We provide physical fabric swatches and produce a prototype garment for your approval before committing to full production — ensuring you're 100% satisfied before we scale.</div></div>
+      </div>
+      <div class="faq-item" onclick="tFaq(this)">
+        <div class="faq-q"><span>Which Emirates do you deliver to?</span><div class="faq-tog">+</div></div>
+        <div class="faq-body"><div class="faq-body-in">We deliver across all 7 Emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, and Umm Al Quwain. Collection from our facility or door-to-door delivery both available.</div></div>
+      </div>
+      <div class="faq-item" onclick="tFaq(this)">
+        <div class="faq-q"><span>Can you match our exact brand colours and add our logo?</span><div class="faq-tog">+</div></div>
+        <div class="faq-body"><div class="faq-body-in">Yes. We use Pantone/CMYK colour matching and offer logo embroidery, screen printing, and heat transfer. Our team advises on the most durable method for your fabric and uniform type.</div></div>
+      </div>
     </div>
   </div>
 
   <!-- CTA -->
-  <div style="padding:0 24px 96px;max-width:1240px;margin:0 auto;">
+  <div style="padding:0 28px 96px;max-width:1240px;margin:0 auto;">
     <div class="cta-banner reveal">
       <h2>Ready to Elevate Your Team's Appearance?</h2>
       <p>Join hundreds of UAE organisations who trust House of Panache with their brand.</p>
@@ -1016,26 +526,31 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
       </div>
     </div>
   </div>
+
 </div><!-- /home -->
 
-<!-- =================== ABOUT =================== -->
+
+<!-- =========================================================
+     ABOUT PAGE
+     ========================================================= -->
 <div id="page-about" class="page">
   <div class="ap-hero">
     <div>
       <div class="eyebrow">About Us</div>
-      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,66px);font-weight:700;color:var(--gray-900);line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;">Three Decades of<br><span style="color:var(--green-darker);font-style:italic;">Crafting</span> Excellence</h1>
-      <p style="font-size:15px;color:var(--gray-500);line-height:1.85;margin-bottom:28px;max-width:480px;">From a boutique tailoring atelier to the UAE's most trusted uniform manufacturer — built on precision, passion, and partnership.</p>
+      <h1 style="font-family:var(--font-display);font-size:clamp(36px,5vw,66px);font-weight:400;color:var(--gray-900);line-height:1.08;letter-spacing:-0.025em;margin-bottom:20px;">Three Decades of<br><span style="color:var(--green-dark);font-style:italic;">Crafting</span> Excellence</h1>
+      <p style="font-size:15px;color:var(--gray-500);line-height:1.88;margin-bottom:28px;max-width:480px;">From a boutique tailoring atelier to the UAE's most trusted uniform manufacturer — built on precision, passion, and partnership.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button class="btn btn-prim" onclick="go('contact')">Work With Us</button>
         <button class="btn btn-out" onclick="go('services')">Our Services</button>
       </div>
     </div>
-    <div class="aimg" style="border-radius:var(--radius-xl);max-height:460px;">
-      <img src="images/abouthero.jpg" alt="House of Panache craftsmanship">
+    <div class="aimg" style="border-radius:var(--radius-2xl);max-height:460px;">
+      <img src="images/abouthero.jpeg" alt="House of Panache craftsmanship">
       <div class="aimg-overlay"></div>
-      <div style="font-size:13px;font-weight:600;color:#fff;text-align:center;padding:0 44px;line-height:1.65;position:relative;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.5);"></div>
     </div>
-    </div>
+  </div>
+
+  <!-- Core Values -->
   <div class="sec" style="padding-top:0;">
     <div class="reveal" style="text-align:center;margin-bottom:48px;">
       <div class="eyebrow">Core Values</div>
@@ -1050,128 +565,88 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
       <div class="v-card"><div class="v-n">06</div><h3 class="v-ttl">Responsible Production</h3><p class="v-dsc">Committed to ethical sourcing and waste reduction, working with suppliers who meet environmental and social standards aligned with modern values.</p></div>
     </div>
   </div>
-  <div style="background:var(--off-white);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:72px 24px;">
+
+  <!-- Industries -->
+  <div style="background:var(--beige);border-top:1px solid var(--beige-mid);border-bottom:1px solid var(--beige-mid);padding:72px 28px;">
     <div class="wrap">
       <div class="reveal" style="text-align:center;margin-bottom:48px;">
         <div class="eyebrow">Industries</div>
         <h2 class="sh">Built for <span class="g">Every Sector</span></h2>
       </div>
-      <!-- <div class="ind-grid stagger">
-        <div class="ind-card"><div class="ind-ico">🏢</div><div class="ind-nm">Corporate</div><div class="ind-sub">Executive &amp; staff</div></div>
-        <div class="ind-card"><div class="ind-ico">🏫</div><div class="ind-nm">Education</div><div class="ind-sub">Schools &amp; universities</div></div>
-        <div class="ind-card"><div class="ind-ico">🏥</div><div class="ind-nm">Healthcare</div><div class="ind-sub">Scrubs &amp; clinical wear</div></div>
-        <div class="ind-card"><div class="ind-ico">🏨</div><div class="ind-nm">Hospitality</div><div class="ind-sub">Hotels &amp; resorts</div></div>
-        <div class="ind-card"><div class="ind-ico">🛡️</div><div class="ind-nm">Security</div><div class="ind-sub">Functional workwear</div></div>
-        <div class="ind-card"><div class="ind-ico">🏗️</div><div class="ind-nm">Construction</div><div class="ind-sub">Safety &amp; hi-vis</div></div>
-        <div class="ind-card"><div class="ind-ico">🍽️</div><div class="ind-nm">F&amp;B</div><div class="ind-sub">Restaurants &amp; catering</div></div>
-        <div class="ind-card"><div class="ind-ico">🏪</div><div class="ind-nm">Retail</div><div class="ind-sub">Brand-forward retail</div></div>
-      </div> -->
-<div class="ind-grid stagger">
+      <div class="ind-list stagger">
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-    </div>
-    <div class="ind-nm">Corporate</div>
-    <div class="ind-sub">Executive &amp; staff uniforms</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Corporate</div><div class="ind-row-sub">Executive &amp; staff uniforms</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-  <div class="ind-icon-wrap">
-    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>
-  </div>
-  <div class="ind-nm">Manufacturing</div>
-  <div class="ind-sub">Industrial &amp; factory wear</div>
-  <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Manufacturing</div><div class="ind-row-sub">Industrial &amp; factory wear</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-    </div>
-    <div class="ind-nm">Public Safety</div>
-    <div class="ind-sub">Emergency &amp; civil services</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Public Safety</div><div class="ind-row-sub">Emergency &amp; civil services</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M17 6c1.5.5 3 2 3 4"/></svg>
-    </div>
-    <div class="ind-nm">Sports &amp; Fitness</div>
-    <div class="ind-sub">Gyms &amp; wellness centres</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M17 6c1.5.5 3 2 3 4"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Sports &amp; Fitness</div><div class="ind-row-sub">Gyms &amp; wellness centres</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-    </div>
-    <div class="ind-nm">Transportation</div>
-    <div class="ind-sub">Drivers &amp; logistics crews</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Transportation</div><div class="ind-row-sub">Drivers &amp; logistics crews</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-    </div>
-    <div class="ind-nm">Healthcare</div>
-    <div class="ind-sub">Scrubs &amp; clinical wear</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Healthcare</div><div class="ind-row-sub">Scrubs &amp; clinical wear</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    </div>
-    <div class="ind-nm">Hospitality</div>
-    <div class="ind-sub">Hotels &amp; resorts</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Hospitality</div><div class="ind-row-sub">Hotels &amp; resorts</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    </div>
-    <div class="ind-nm">Security</div>
-    <div class="ind-sub">Functional workwear</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Security</div><div class="ind-row-sub">Functional workwear</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    </div>
-    <div class="ind-nm">Salon &amp; Spa</div>
-    <div class="ind-sub">Beauty &amp; wellness wear</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Salon &amp; Spa</div><div class="ind-row-sub">Beauty &amp; wellness wear</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-    </div>
-    <div class="ind-nm">F&amp;B</div>
-    <div class="ind-sub">Restaurants &amp; catering</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">F&amp;B</div><div class="ind-row-sub">Restaurants &amp; catering</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-  <div class="ind-card">
-    <div class="ind-icon-wrap">
-      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    </div>
-    <div class="ind-nm">Retail</div>
-    <div class="ind-sub">Brand-forward retail</div>
-    <div class="ind-arr">View uniforms →</div>
-  </div>
+        <div class="ind-row">
+          <div class="ind-row-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <div class="ind-row-body"><div class="ind-row-nm">Retail</div><div class="ind-row-sub">Brand-forward retail</div></div>
+          <div class="ind-row-arr">View uniforms →</div>
+        </div>
 
-</div>
-    
+      </div>
     </div>
   </div>
-  <div style="padding:72px 24px 96px;max-width:1240px;margin:0 auto;">
+
+  <!-- About CTA -->
+  <div style="padding:72px 28px 96px;max-width:1240px;margin:0 auto;">
     <div class="cta-banner reveal">
       <h2>Ready to Partner With the Best?</h2>
       <p>Let's start a conversation about your uniform requirements today.</p>
@@ -1183,191 +658,141 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
   </div>
 </div><!-- /about -->
 
-<!-- =================== SERVICES =================== -->
+
+<!-- =========================================================
+     SERVICES PAGE
+     ========================================================= -->
 <div id="page-services" class="page">
   <div class="sp-hero">
     <div class="eyebrow">Services</div>
     <h1 class="sh" style="font-size:clamp(36px,5vw,66px);">Complete Uniform Solutions<br>for <span class="g">Every Industry</span></h1>
-    <p style="font-size:15px;color:var(--gray-500);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;">End-to-end uniform manufacturing — from design concept to final delivery — built around your brand and timeline.</p>
+    <p style="font-size:15px;color:var(--gray-500);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.78;">End-to-end uniform manufacturing — from design concept to final delivery — built around your brand and timeline.</p>
   </div>
-  <div style="padding:0 24px 96px;max-width:1240px;margin:0 auto;">
+
+  <!-- Core Services Grid -->
+  <div style="padding:0 28px 56px;max-width:1240px;margin:0 auto;">
     <div class="sf-grid stagger">
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <h3>Custom Uniform Design</h3>
+          <p>Bespoke design translating your brand identity into professional uniform concepts with unlimited revisions.</p>
+          <ul class="sf-feats"><li>Brand integration</li><li>Multiple concepts</li><li>Physical prototype</li><li>Unlimited revisions</li></ul>
+        </div>
       </div>
-      <h3>Custom Uniform Design</h3>
-      <p>Bespoke design translating your brand identity into professional uniform concepts with unlimited revisions.</p>
-      <ul class="sf-feats"><li>Brand integration</li><li>Multiple concepts</li><li>Physical prototype</li><li>Unlimited revisions</li></ul>
-    </div>
-  </div>
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+          <h3>Bespoke Tailoring</h3>
+          <p>Precision individual tailoring for executives and staff requiring a perfect fit, finish, and lasting comfort.</p>
+          <ul class="sf-feats"><li>Individual measurements</li><li>Premium fabric selection</li><li>Master tailor crafted</li><li>Fitting sessions</li></ul>
+        </div>
       </div>
-      <h3>Bespoke Tailoring</h3>
-      <p>Precision individual tailoring for executives and staff requiring a perfect fit, finish, and lasting comfort.</p>
-      <ul class="sf-feats"><li>Individual measurements</li><li>Premium fabric selection</li><li>Master tailor crafted</li><li>Fitting sessions</li></ul>
-    </div>
-  </div>
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg></div>
+          <h3>Bulk Manufacturing</h3>
+          <p>Scalable in-house production from 10 to 10,000+ pieces with the same quality assurance at every scale.</p>
+          <ul class="sf-feats"><li>Min. 10 pieces</li><li>Consistent QA</li><li>XS to 5XL sizing</li><li>Fast turnaround</li></ul>
+        </div>
       </div>
-      <h3>Bulk Manufacturing</h3>
-      <p>Scalable in-house production from 10 to 10,000+ pieces with the same quality assurance at every scale.</p>
-      <ul class="sf-feats"><li>Min. 10 pieces</li><li>Consistent QA</li><li>XS to 5XL sizing</li><li>Fast turnaround</li></ul>
-    </div>
-  </div>
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+          <h3>Embroidery &amp; Printing</h3>
+          <p>Durable logo application via embroidery, screen printing, and heat transfer — Pantone matched.</p>
+          <ul class="sf-feats"><li>Precision embroidery</li><li>Screen &amp; digital print</li><li>Pantone colour match</li><li>Wash-resistant</li></ul>
+        </div>
       </div>
-      <h3>Embroidery &amp; Printing</h3>
-      <p>Durable logo application via embroidery, screen printing, and heat transfer — Pantone matched.</p>
-      <ul class="sf-feats"><li>Precision embroidery</li><li>Screen &amp; digital print</li><li>Pantone colour match</li><li>Wash-resistant</li></ul>
-    </div>
-  </div>
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <h3>Inventory Management</h3>
+          <p>Ongoing uniform supply management including stock monitoring, replenishment, and new-hire packs.</p>
+          <ul class="sf-feats"><li>Managed stock levels</li><li>New-hire kits</li><li>Seasonal replenishment</li><li>Annual audits</li></ul>
+        </div>
       </div>
-      <h3>Inventory Management</h3>
-      <p>Ongoing uniform supply management including stock monitoring, replenishment, and new-hire packs.</p>
-      <ul class="sf-feats"><li>Managed stock levels</li><li>New-hire kits</li><li>Seasonal replenishment</li><li>Annual audits</li></ul>
-    </div>
-  </div>
 
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="sfcard">
+        <div class="sfcard-body">
+          <div class="sfcard-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Account Management</h3>
+          <p>A dedicated account manager from consultation through delivery and aftercare — always available.</p>
+          <ul class="sf-feats"><li>Dedicated manager</li><li>WhatsApp support</li><li>Post-delivery care</li><li>Reorder management</li></ul>
+        </div>
       </div>
-      <h3>Account Management</h3>
-      <p>A dedicated account manager from consultation through delivery and aftercare — always available.</p>
-      <ul class="sf-feats"><li>Dedicated manager</li><li>WhatsApp support</li><li>Post-delivery care</li><li>Reorder management</li></ul>
+
     </div>
   </div>
 
-  <!-- <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      </div>
-      <h3>School Uniforms</h3>
-      <p>Durable, smart uniforms with full size ranges, PE kit options, and accessories for every academic season.</p>
-      <ul class="sf-feats"><li>Full academic range</li><li>Durable fabrics</li><li>Gender-inclusive sizing</li><li>PE kits included</li></ul>
-    </div>
-  </div>
-
-  <div class="sfcard">
-    <div class="sfcard-body">
-      <div class="sfcard-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      </div>
-      <h3>Medical &amp; Healthcare</h3>
-      <p>Clinical-grade scrubs and specialist healthcare uniforms in antimicrobial, breathable fabrics.</p>
-      <ul class="sf-feats"><li>Antimicrobial options</li><li>Healthcare certified</li><li>Functional design</li><li>Easy-care fabrics</li></ul>
-    </div>
-  </div>
-
-<div class="sfcard">
-  <div class="sfcard-body">
-    <div class="sfcard-icon-wrap">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    </div>
-    <h3>Salon &amp; Spa Uniforms</h3>
-    <p>Elegant, comfortable uniforms for beauty and wellness professionals — designed to reflect luxury, cleanliness, and brand identity.</p>
-    <ul class="sf-feats"><li>Lightweight breathable fabric</li><li>Elegant cut &amp; finish</li><li>Logo embroidery</li><li>Custom colour matching</li></ul>
-  </div>
-</div> -->
-
-</div>
-</div>
-
-<div style="padding:0 24px;max-width:1240px;margin:0 auto;">
+  <!-- Additional Services -->
+  <div style="padding:0 28px;max-width:1240px;margin:0 auto;">
     <div class="add-sec reveal">
-  <div class="add-sec-hdr">
-    <div class="eyebrow">Additional Services</div>
-    <h2 class="sh">In Addition to Our <span class="g">Core Services</span></h2>
-    <p style="font-size:14px;color:var(--gray-500);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.75;">We also offer a full suite of complementary services to support every aspect of your uniform programme.</p>
+      <div class="add-sec-hdr">
+        <div class="eyebrow">Additional Services</div>
+        <h2 class="sh">In Addition to Our <span class="g">Core Services</span></h2>
+        <p style="font-size:14px;color:var(--gray-500);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.78;">We also offer a full suite of complementary services to support every aspect of your uniform programme.</p>
+      </div>
+
+      <div class="add-list stagger">
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Uniform Consultation</div><div class="add-row-dsc">Personalised recommendations tailored to your brand and industry</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M3 21h18"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Measurement Services</div><div class="add-row-dsc">Precise fit covering every role, size, and body type in your team</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Uniform Fitting</div><div class="add-row-dsc">On-site fitting sessions before full delivery for your entire team</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Alterations &amp; Repair</div><div class="add-row-dsc">Precise adjustments and repairs to extend the life of your uniforms</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Logo Design</div><div class="add-row-dsc">Custom logos and branding crafted specifically for uniform application</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">Uniform Accessories</div><div class="add-row-dsc">Hats, scarves, ties, lanyards and more to complete your uniform look</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <div class="add-row">
+          <div class="add-row-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="add-row-body"><div class="add-row-nm">International Shipping</div><div class="add-row-dsc">Fully tracked worldwide delivery for your global workforce</div></div>
+          <div class="add-row-arr">→</div>
+        </div>
+
+        <!-- 8th placeholder to keep 2-col grid even -->
+        <div class="add-row" style="pointer-events:none;opacity:0;"></div>
+
+      </div>
+    </div>
   </div>
-  
-<div class="add-grid stagger">
 
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <div class="add-nm">Uniform Consultation</div>
-      <div class="add-dsc">Our experts assess your uniform needs and provide personalised recommendations tailored to your brand and industry.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M3 3h18"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M3 21h18"/></svg>
-      </div>
-      <div class="add-nm">Measurement Services</div>
-      <div class="add-dsc">Ensure a precise fit with our professional measurement services — covering every role, size, and body type in your team.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
-      </div>
-      <div class="add-nm">Uniform Fitting</div>
-      <div class="add-dsc">Schedule on-site fitting sessions for your entire team to guarantee a perfect, comfortable fit before full delivery.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
-      </div>
-      <div class="add-nm">Alterations &amp; Repair</div>
-      <div class="add-dsc">Our skilled seamstresses make precise adjustments and repairs to extend the life and fit of your existing uniforms.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
-      </div>
-      <div class="add-nm">Logo Design</div>
-      <div class="add-dsc">Our in-house creative team designs custom logos and branding elements crafted specifically for uniform application.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      </div>
-      <div class="add-nm">Uniform Accessories</div>
-      <div class="add-dsc">A curated range of accessories — hats, scarves, ties, lanyards, and more — to complement and complete your uniform look.</div>
-    </div>
-
-    <div class="add-card">
-      <div class="add-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/><path d="M20 4l-8 4-4-8"/></svg>
-      </div>
-      <div class="add-nm">International Shipping</div>
-      <div class="add-dsc">We ship uniforms worldwide to accommodate your global workforce — fully tracked, reliably delivered, anywhere.</div>
-    </div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="padding:0 24px 96px;max-width:1240px;margin:0 auto;">
-<div class="cta-banner reveal">
+  <!-- Services CTA -->
+  <div style="padding:0 28px 96px;max-width:1240px;margin:0 auto;">
+    <div class="cta-banner reveal">
       <h2>Let's Discuss Your Uniform Needs</h2>
       <p>Get a free consultation and tailored quote for your organisation.</p>
       <div class="cta-btns">
@@ -1376,18 +801,21 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
       </div>
     </div>
   </div>
-</div>
-</div>
 </div><!-- /services -->
 
-<!-- =================== CONTACT =================== -->
+
+<!-- =========================================================
+     CONTACT PAGE
+     ========================================================= -->
 <div id="page-contact" class="page">
   <div class="cp-hero">
     <div class="eyebrow">Contact</div>
     <h1 class="sh" style="font-size:clamp(34px,5vw,60px);">Let's Create Something <span class="g">Exceptional</span> Together</h1>
-    <p style="font-size:15px;color:var(--gray-500);margin-top:14px;line-height:1.75;">Reach out for a free consultation or quote. Our team responds within 2 business hours.</p>
+    <p style="font-size:15px;color:var(--gray-500);margin-top:14px;line-height:1.78;">Reach out for a free consultation or quote. Our team responds within 2 business hours.</p>
   </div>
+
   <div class="cp-layout">
+    <!-- Contact Form -->
     <div class="cform">
       <h2>Request a Free Consultation</h2>
       <div class="frow">
@@ -1398,68 +826,124 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
       <div class="fg"><label class="flbl">Email Address</label><input id="fromEmail" type="email" class="finput" placeholder="ahmed@company.ae"></div>
       <div class="fg"><label class="flbl">Phone Number</label><input id="phone" type="tel" class="finput" placeholder="+971 50 000 0000"></div>
       <div class="frow">
-        <div class="fg"><label class="flbl">Service Required</label><select id="service" class="fsel"><option>Select service...</option><option>Custom Design</option><option>Bespoke Tailoring</option><option>Bulk Manufacturing</option><option>Sports &amp; Fitness Uniforms</option>
-<option>Medical Uniforms</option>
-<option>Salon &amp; Spa Uniforms</option>
-<option>Inventory Management</option>
-<option>Uniform Consultation</option>
-<option>Measurement Services</option>
-<option>Uniform Fitting</option>
-<option>Alterations &amp; Repair</option>
-<option>Logo Design</option>
-<option>Uniform Accessories</option>
-<option>International Shipping</option></select></div>
-
-
-        <div class="fg"><label class="flbl">Order Quantity</label><select id="quantity" class="fsel"><option>Estimated quantity...</option><option>10–50 pieces</option><option>50–200 pieces</option><option>200–500 pieces</option><option>500–1,000 pieces</option><option>1,000+ pieces</option></select></div>
+        <div class="fg">
+          <label class="flbl">Service Required</label>
+          <select id="service" class="fsel">
+            <option>Select service...</option>
+            <option>Custom Design</option>
+            <option>Bespoke Tailoring</option>
+            <option>Bulk Manufacturing</option>
+            <option>Sports &amp; Fitness Uniforms</option>
+            <option>Medical Uniforms</option>
+            <option>Salon &amp; Spa Uniforms</option>
+            <option>Inventory Management</option>
+            <option>Uniform Consultation</option>
+            <option>Measurement Services</option>
+            <option>Uniform Fitting</option>
+            <option>Alterations &amp; Repair</option>
+            <option>Logo Design</option>
+            <option>Uniform Accessories</option>
+            <option>International Shipping</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flbl">Order Quantity</label>
+          <select id="quantity" class="fsel">
+            <option>Estimated quantity...</option>
+            <option>10–50 pieces</option>
+            <option>50–200 pieces</option>
+            <option>200–500 pieces</option>
+            <option>500–1,000 pieces</option>
+            <option>1,000+ pieces</option>
+          </select>
+        </div>
       </div>
       <div class="fg"><label class="flbl">Your Requirements</label><textarea id="message" class="ftxt" placeholder="Describe your uniform needs, timeline, specific requirements..."></textarea></div>
       <button class="btn btn-prim" style="width:100%;justify-content:center;padding:15px;font-size:14px;" id="submitBtn" onclick="handleSubmit(this)">Submit Consultation Request</button>
     </div>
+
+    <!-- Contact Info -->
     <div class="cinfo-stack">
-      <button class="wa-btn" onclick="window.open('https://wa.me/971506178806?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20uniform%20services.','_blank')"><div class="wa-ico"><svg viewBox="0 0 24 24" style="width:30px;height:30px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div><div class="wa-text"><strong>Chat on WhatsApp</strong><span>Instant response · Mon–Sat, 8AM–8PM UAE</span></div><div style="margin-left:auto;font-size:18px;color:#fff;">→</div></button>
-      <!-- <div class="ci-card"><div class="ci-ico">📍</div><h3>Visit Our Showroom</h3><p>Dubai, United Arab Emirates<br>Appointments available Sun–Thu</p></div> -->
-      <div class="ci-card"><div class="ci-ico"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-<h3>Call Us</h3><p>+971 52 966 5010<br>Sun–Thu: 8AM–6PM · Sat: 9AM–4PM GST</p></div>
-      <div class="ci-card"><div class="ci-ico"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-<h3>Email Us</h3><p>info@houseofpanache.ae<br>Response within 2 business hours</p></div>
-      <div class="ci-card"><div class="ci-ico"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-<h3>UAE-Wide Delivery</h3><p>Dubai · Abu Dhabi · Sharjah · Ajman<br>Fujairah · RAK · Umm Al Quwain</p></div>
-      <!-- <div class="map-ph"><span>🗺️</span><p>Connect Google Maps API here</p></div> -->
+      <!-- WhatsApp -->
+      <button class="wa-btn" onclick="window.open('https://wa.me/971506178806?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20uniform%20services.','_blank')">
+        <div class="wa-ico">
+          <svg viewBox="0 0 24 24" style="width:30px;height:30px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </div>
+        <div class="wa-text">
+          <strong>Chat on WhatsApp</strong>
+          <span>Instant response · Mon–Sat, 8AM–8PM UAE</span>
+        </div>
+        <div style="margin-left:auto;font-size:18px;color:#fff;">→</div>
+      </button>
+
+      <!-- Phone -->
+      <div class="ci-card">
+        <div class="ci-ico">
+          <svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Call Us</h3>
+        <p>+971 52 966 5010<br>Sun–Thu: 8AM–6PM · Sat: 9AM–4PM GST</p>
+      </div>
+
+      <!-- Email -->
+      <div class="ci-card">
+        <div class="ci-ico">
+          <svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Email Us</h3>
+        <p>info@houseofpanache.ae<br>Response within 2 business hours</p>
+      </div>
+
+      <!-- Delivery -->
+      <div class="ci-card">
+        <div class="ci-ico">
+          <svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--green-darker);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>UAE-Wide Delivery</h3>
+        <p>Dubai · Abu Dhabi · Sharjah · Ajman<br>Fujairah · RAK · Umm Al Quwain</p>
+      </div>
     </div>
   </div>
 </div><!-- /contact -->
 
-<!-- =================== FOOTER =================== -->
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
 <footer>
   <div class="ft-in">
     <div class="ft-top">
+      <!-- Brand -->
       <div>
         <div class="nav-logo" style="display:inline-flex;cursor:pointer;" onclick="go('home')">
           <div class="nav-logo-mark">HP</div>
-          <div class="nav-logo-text"><b style="color:#fff;">House of Panache</b><span>Tailoring Brilliance · UAE</span></div>
+          <div class="nav-logo-text">
+            <b style="color:#fff;">House of Panache</b>
+            <span>Tailoring Brilliance · UAE</span>
+          </div>
         </div>
         <p class="ft-desc">UAE's premier uniform design and manufacturing company. Crafting premium uniforms for over 30 years across all seven Emirates.</p>
-        <div class="ft-uae"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Dubai · Abu Dhabi · Sharjah · All UAE</div>
+        <div class="ft-uae">
+          <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dubai · Abu Dhabi · Sharjah · All UAE
+        </div>
         <div class="ft-soc">
-          <!-- LinkedIn -->
           <a class="soc-btn" title="LinkedIn" href="https://www.linkedin.com/company/houseofpanache-uae" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <!-- Instagram -->
           <a class="soc-btn" title="Instagram" href="https://www.instagram.com/houseofpanache.uae" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" style="fill:none;stroke:rgba(255,255,255,.45);stroke-width:2" class="soc-stroke"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" style="stroke:rgba(255,255,255,.45);stroke-width:2;stroke-linecap:round" class="soc-stroke"/></svg>
           </a>
-          <!-- Facebook -->
           <a class="soc-btn" title="Facebook" href="https://www.facebook.com/houseofpanache.uae" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
-          <!-- WhatsApp -->
           <a class="soc-btn" title="WhatsApp" href="https://wa.me/971506178806?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20uniform%20services." target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </a>
         </div>
       </div>
+
+      <!-- Navigate -->
       <div>
         <div class="ft-col-lbl">Navigate</div>
         <ul class="ft-links">
@@ -1469,6 +953,8 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
           <li><button onclick="go('contact')">Contact</button></li>
         </ul>
       </div>
+
+      <!-- Services -->
       <div>
         <div class="ft-col-lbl">Services</div>
         <ul class="ft-links">
@@ -1482,622 +968,35 @@ footer{background:var(--gray-900);color:#fff;padding:72px 24px 36px}
           <li><a href="#">International Shipping</a></li>
         </ul>
       </div>
+
+      <!-- Contact -->
       <div>
         <div class="ft-col-lbl">Contact</div>
-        <div class="ft-cr"><div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-<div class="ft-cr-txt">Dubai, United Arab Emirates</div></div>
-        <div class="ft-cr"><div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-<div class="ft-cr-txt">+971 52 966 5010</div></div>
-        <div class="ft-cr"><div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-<div class="ft-cr-txt">info@houseofpanache.ae</div></div>
-        <div class="ft-cr"><div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-<div class="ft-cr-txt">Sun–Thu: 8AM–6PM GST</div></div>
+        <div class="ft-cr">
+          <div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="ft-cr-txt">Dubai, United Arab Emirates</div>
+        </div>
+        <div class="ft-cr">
+          <div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="ft-cr-txt">+971 52 966 5010</div>
+        </div>
+        <div class="ft-cr">
+          <div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="ft-cr-txt">info@houseofpanache.ae</div>
+        </div>
+        <div class="ft-cr">
+          <div class="ft-cr-ico"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="ft-cr-txt">Sun–Thu: 8AM–6PM GST</div>
+        </div>
       </div>
     </div>
+
     <div class="ft-bot">
       <div class="ft-copy">© 2025 House of Panache. All rights reserved.</div>
-      <!-- <div class="ft-leg">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Quality Guarantee</a>
-      </div> -->
     </div>
   </div>
 </footer>
 
-<script>
-/* ====== PAGE ROUTING ====== */
-function go(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  document.querySelectorAll('.nav-link').forEach(l => {
-    l.classList.toggle('active-link', l.textContent.trim().toLowerCase() === page);
-  });
-  window.scrollTo({ top: 0 });
-  setTimeout(initReveal, 80);
-  if (page === 'home') setTimeout(initProcess, 200);
-}
-
-/* ====== NAV SCROLL ====== */
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-/* ====== MOBILE MENU ====== */
-function toggleMob() {
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobMenu');
-  h.classList.toggle('open');
-  m.classList.toggle('open');
-  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
-}
-function closeMob() {
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobMenu').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-/* ====== SCROLL REVEAL ====== */
-function initReveal() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal:not(.in), .reveal-l:not(.in), .reveal-r:not(.in), .stagger:not(.in)').forEach(el => obs.observe(el));
-}
-document.addEventListener('DOMContentLoaded', () => { initReveal(); initProcess(); });
-
-/* ====== FAQ ====== */
-function tFaq(item) {
-  const was = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!was) item.classList.add('open');
-}
-
-/* ====== REVIEWS SLIDER + STORAGE ====== */
-// let rIdx = 0;
-// let allReviews = [];
-// let rvRating = 0;
-
-// // Seed reviews (shown if no user reviews yet)
-// const seedReviews = [
-//   { name:'Ahmed Al Kaabi', role:'HR Director · Dubai Corporation', rating:5, text:'House of Panache transformed how our team presents themselves. Quality across 200 uniforms was exceptional — consistent, on-time, and exactly what our brand demanded.', ts: Date.now() - 9000000 },
-//   { name:'Khalid Al Ameri', role:'Operations Manager · Fitness & Wellness Group', rating:5, text:'Our fitness centre staff across four locations wear uniforms that truly reflect our brand energy. The fabric quality and colour consistency order after order is simply unmatched.', ts: Date.now() - 8000000 },
-//   { name:'Rania Hassan', role:'GM · Luxury Hotels Group', rating:5, text:'Our hospitality staff across three properties wear uniforms that genuinely reflect our luxury brand. The embroidery work and fabric quality are truly extraordinary.', ts: Date.now() - 7000000 },
-//   { name:'Dr. Mohammed Nasser', role:'Ops Manager · Private Hospital', rating:5, text:'Medical scrubs that fit properly during 12-hour shifts changed everything for our team. The breathable fabric showed they truly understand healthcare requirements.', ts: Date.now() - 6000000 }
-// ];
-
-// function perView() { return window.innerWidth < 768 ? 1 : 2; }
-// function totalPages() { return Math.max(1, Math.ceil(allReviews.length / perView())); }
-
-// function moveRev(d) { rIdx = Math.max(0, Math.min(totalPages() - 1, rIdx + d)); renderRev(); }
-// function goRev(i) { rIdx = i; renderRev(); }
-
-// function renderRev() {
-//   const track = document.getElementById('revTrack');
-//   const dotsEl = document.getElementById('revDots');
-//   const emptyEl = document.getElementById('revEmpty');
-//   if (!track) return;
-
-//   // Clear existing cards (keep empty placeholder)
-//   [...track.children].forEach(c => { if (!c.id) c.remove(); });
-
-//   if (allReviews.length === 0) {
-//     emptyEl.style.display = 'block';
-//     dotsEl.innerHTML = '';
-//     return;
-//   }
-//   emptyEl.style.display = 'none';
-
-//   // Render cards
-//   allReviews.forEach(rv => {
-//     const stars = '⭐'.repeat(rv.rating);
-//     const initials = rv.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-//     const card = document.createElement('div');
-//     card.className = 'r-card';
-//     card.innerHTML = `
-//       <div class="r-stars">${stars}</div>
-//       <p class="r-txt">"${rv.text}"</p>
-//       <div class="r-auth">
-//         <div class="r-av">${initials}</div>
-//         <div>
-//           <div class="r-nm">${rv.name}</div>
-//           <div class="r-role">${rv.role}</div>
-//         </div>
-//       </div>`;
-//     track.appendChild(card);
-//   });
-
-//   // Slide
-//   requestAnimationFrame(() => {
-//     const firstCard = track.querySelector('.r-card');
-//     if (!firstCard) return;
-//     const cardW = firstCard.offsetWidth + 20;
-//     const pv = perView();
-//     track.style.transform = `translateX(-${rIdx * cardW * pv}px)`;
-//   });
-
-//   // Dots
-//   const pages = totalPages();
-//   dotsEl.innerHTML = '';
-//   for (let i = 0; i < pages; i++) {
-//     const dot = document.createElement('div');
-//     dot.className = 'r-dot' + (i === rIdx ? ' on' : '');
-//     dot.onclick = () => goRev(i);
-//     dotsEl.appendChild(dot);
-//   }
-// }
-
-// async function loadReviews() {
-//   try {
-//     const result = await window.storage.get('hop-reviews', true);
-//     let stored = result ? JSON.parse(result.value) : [];
-//     if (!Array.isArray(stored)) stored = [];
-//     // Merge seeds + user reviews, sort by rating desc then timestamp desc
-//     const combined = [...seedReviews, ...stored];
-//     combined.sort((a, b) => b.rating - a.rating || b.ts - a.ts);
-//     allReviews = combined;
-//   } catch {
-//     allReviews = [...seedReviews];
-//     allReviews.sort((a, b) => b.rating - a.rating || b.ts - a.ts);
-//   }
-//   rIdx = 0;
-//   renderRev();
-// }
-
-// async function submitReview() {
-//   const nameEl = document.getElementById('rv-name');
-//   const roleEl = document.getElementById('rv-role');
-//   const textEl = document.getElementById('rv-text');
-//   const msgEl  = document.getElementById('rvFormMsg');
-//   const btn    = document.getElementById('rvSubmitBtn');
-
-//   const name = nameEl.value.trim();
-//   const role = roleEl.value.trim();
-//   const text = textEl.value.trim();
-
-//   // Validation
-//   msgEl.className = 'rev-form-msg';
-//   if (!name) { msgEl.textContent = 'Please enter your name.'; msgEl.className = 'rev-form-msg err'; return; }
-//   if (!rvRating) { msgEl.textContent = 'Please select a star rating.'; msgEl.className = 'rev-form-msg err'; return; }
-//   if (text.length < 15) { msgEl.textContent = 'Please write at least 15 characters in your review.'; msgEl.className = 'rev-form-msg err'; return; }
-
-//   btn.disabled = true;
-//   btn.textContent = 'Submitting...';
-
-//   const newReview = {
-//     name,
-//     role: role || 'Verified Customer',
-//     rating: rvRating,
-//     text,
-//     ts: Date.now()
-//   };
-
-//   try {
-//     // Load existing user reviews, append new one, save back
-//     let stored = [];
-//     try {
-//       const existing = await window.storage.get('hop-reviews', true);
-//       if (existing) stored = JSON.parse(existing.value);
-//       if (!Array.isArray(stored)) stored = [];
-//     } catch { stored = []; }
-
-//     stored.push(newReview);
-//     await window.storage.set('hop-reviews', JSON.stringify(stored), true);
-
-//     // Reload and re-render
-//     await loadReviews();
-
-//     // Reset form
-//     nameEl.value = '';
-//     roleEl.value = '';
-//     textEl.value = '';
-//     rvRating = 0;
-//     document.querySelectorAll('.rev-star').forEach(s => s.classList.remove('on'));
-
-//     msgEl.textContent = '✅ Thank you! Your review has been published.';
-//     msgEl.className = 'rev-form-msg ok';
-//     setTimeout(() => { msgEl.className = 'rev-form-msg'; }, 5000);
-
-//   } catch (err) {
-//     console.error('Review save error:', err);
-//     msgEl.textContent = 'Failed to save review. Please try again.';
-//     msgEl.className = 'rev-form-msg err';
-//   }
-
-//   btn.disabled = false;
-//   btn.textContent = 'Submit Review';
-// }
-
-// // Star selector interaction
-// document.addEventListener('DOMContentLoaded', () => {
-//   const stars = document.querySelectorAll('.rev-star');
-//   stars.forEach(star => {
-//     star.addEventListener('click', () => {
-//       rvRating = parseInt(star.dataset.v);
-//       stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= rvRating));
-//     });
-//     star.addEventListener('mouseenter', () => {
-//       const v = parseInt(star.dataset.v);
-//       stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= v));
-//     });
-//     star.addEventListener('mouseleave', () => {
-//       stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= rvRating));
-//     });
-//   });
-// });
-
-// setInterval(() => { rIdx = (rIdx + 1) % totalPages(); renderRev(); }, 5500);
-// window.addEventListener('resize', () => { rIdx = 0; renderRev(); });
-
-/* ====== REVIEWS SLIDER + GOOGLE SHEETS ====== */
-let rIdx = 0;
-let allReviews = [];
-let rvRating = 0;
-
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw2AB2hnpjd2U9mXCyfKrGAsNDLtHVsKQOrEfiqqeD--4N-I5dPtYPOXhU_vSBRtT-G/exec';
-
-const seedReviews = [
-  { name:'Ahmed Al Kaabi', role:'HR Director · Dubai Corporation', rating:5, text:'House of Panache transformed how our team presents themselves. Quality across 200 uniforms was exceptional — consistent, on-time, and exactly what our brand demanded.', ts: Date.now()-9000000 },
-  { name:'Khalid Al Ameri', role:'Operations Manager · Fitness & Wellness Group', rating:5, text:'Our fitness centre staff across four locations wear uniforms that truly reflect our brand energy. The fabric quality and colour consistency order after order is simply unmatched.', ts: Date.now()-8000000 },
-  { name:'Rania Hassan', role:'GM · Luxury Hotels Group', rating:5, text:'Our hospitality staff across three properties wear uniforms that genuinely reflect our luxury brand. The embroidery work and fabric quality are truly extraordinary.', ts: Date.now()-7000000 },
-  { name:'Dr. Mohammed Nasser', role:'Ops Manager · Private Hospital', rating:5, text:'Medical scrubs that fit properly during 12-hour shifts changed everything for our team. The breathable fabric showed they truly understand healthcare requirements.', ts: Date.now()-6000000 }
-];
-
-function perView() { return window.innerWidth < 768 ? 1 : 2; }
-function totalPages() { return Math.max(1, Math.ceil(allReviews.length / perView())); }
-function moveRev(d) { rIdx = Math.max(0, Math.min(totalPages()-1, rIdx+d)); renderRev(); }
-function goRev(i) { rIdx = i; renderRev(); }
-
-function renderRev() {
-  const track  = document.getElementById('revTrack');
-  const dotsEl = document.getElementById('revDots');
-  const emptyEl= document.getElementById('revEmpty');
-  if (!track) return;
-
-  [...track.children].forEach(c => { if (!c.id) c.remove(); });
-
-  if (!allReviews.length) {
-    if (emptyEl) emptyEl.style.display = 'block';
-    if (dotsEl) dotsEl.innerHTML = '';
-    return;
-  }
-  if (emptyEl) emptyEl.style.display = 'none';
-
-  allReviews.forEach(rv => {
-    const stars    = '⭐'.repeat(rv.rating);
-    const initials = rv.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-    const card     = document.createElement('div');
-    card.className = 'r-card';
-    card.innerHTML = `
-      <div class="r-stars">${stars}</div>
-      <p class="r-txt">"${rv.text}"</p>
-      <div class="r-auth">
-        <div class="r-av">${initials}</div>
-        <div><div class="r-nm">${rv.name}</div><div class="r-role">${rv.role}</div></div>
-      </div>`;
-    track.appendChild(card);
-  });
-
-  requestAnimationFrame(() => {
-    const first = track.querySelector('.r-card');
-    if (!first) return;
-    track.style.transform = `translateX(-${rIdx * (first.offsetWidth + 20) * perView()}px)`;
-  });
-
-  if (dotsEl) {
-    dotsEl.innerHTML = '';
-    for (let i = 0; i < totalPages(); i++) {
-      const dot = document.createElement('div');
-      dot.className = 'r-dot' + (i === rIdx ? ' on' : '');
-      dot.onclick = () => goRev(i);
-      dotsEl.appendChild(dot);
-    }
-  }
-}
-
-async function loadReviews() {
-  try {
-    const res  = await fetch(SHEET_URL, { method:'GET' });
-    const data = await res.json();
-    if (data.success && data.reviews.length) {
-      allReviews = data.reviews; // already sorted by Apps Script
-    } else {
-      allReviews = [...seedReviews];
-    }
-  } catch {
-    allReviews = [...seedReviews]; // fallback if sheet unreachable
-  }
-  rIdx = 0;
-  renderRev();
-}
-
-async function submitReview() {
-  const nameEl = document.getElementById('rv-name');
-  const roleEl = document.getElementById('rv-role');
-  const textEl = document.getElementById('rv-text');
-  const msgEl  = document.getElementById('rvFormMsg');
-  const btn    = document.getElementById('rvSubmitBtn');
-
-  const name = nameEl.value.trim();
-  const role = roleEl.value.trim();
-  const text = textEl.value.trim();
-
-  msgEl.className = 'rev-form-msg';
-  if (!name)          { msgEl.textContent='Please enter your name.'; msgEl.className='rev-form-msg err'; return; }
-  if (!rvRating)      { msgEl.textContent='Please select a star rating.'; msgEl.className='rev-form-msg err'; return; }
-  if (text.length<15) { msgEl.textContent='Please write at least 15 characters.'; msgEl.className='rev-form-msg err'; return; }
-
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-
-  try {
-      const params = new URLSearchParams({
-        name: name,
-        role: role || 'Verified Customer',
-        rating: rvRating,
-        text: text
-      });
-
-      await fetch(SHEET_URL + '?' + params.toString(), {
-        method: 'GET',
-        mode: 'no-cors'
-      });
-
-    nameEl.value = '';
-    roleEl.value = '';
-    textEl.value = '';
-    rvRating = 0;
-    document.querySelectorAll('.rev-star').forEach(s => s.classList.remove('on'));
-
-    msgEl.textContent = '✅ Thank you! Your review will appear shortly.';
-    msgEl.className = 'rev-form-msg ok';
-    setTimeout(() => { msgEl.className = 'rev-form-msg'; }, 6000);
-
-  } catch {
-    msgEl.textContent = 'Failed to submit. Please try again.';
-    msgEl.className = 'rev-form-msg err';
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'Submit Review';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const stars = document.querySelectorAll('.rev-star');
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      rvRating = parseInt(star.dataset.v);
-      stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= rvRating));
-    });
-    star.addEventListener('mouseenter', () => {
-      stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= parseInt(star.dataset.v)));
-    });
-    star.addEventListener('mouseleave', () => {
-      stars.forEach(s => s.classList.toggle('on', parseInt(s.dataset.v) <= rvRating));
-    });
-  });
-  loadReviews();
-});
-
-setInterval(() => { rIdx = (rIdx+1) % totalPages(); renderRev(); }, 5500);
-window.addEventListener('resize', () => { rIdx=0; renderRev(); });
-
-
-// Load reviews on startup
-loadReviews();
-
-/* ====== PROCESS STEP DATA ====== */
-const stepDetails = [
-  [
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>', title: 'Discovery Call', desc: '30-min meeting to understand your organisation, team size, and uniform requirements in full.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M3 3h18"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M3 21h18"/></svg>', title: 'On-site Measurement', desc: 'Our team visits to take precise measurements for every staff role and body type.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>', title: 'Requirements Brief', desc: 'A detailed brief capturing brand colours, functional needs, fabric preferences, and timelines.' }
-  ],
-  [
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Design Concepts', desc: '3 custom concepts presented within 5 days, fully incorporating your brand guidelines.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>', title: 'Fabric Selection', desc: 'Physical swatches delivered so you can confirm colours and feel the quality before production.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg>', title: 'Prototype Approval', desc: 'A physical sample garment is produced for fitting and sign-off before full production.' }
-  ],
-  [
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M2 20h20M4 20V10l6-4v4l6-4v14"/><rect x="9" y="14" width="6" height="6"/></svg>', title: 'In-House Production', desc: 'Every garment is cut, sewn, and finished in our dedicated UAE facility using premium machinery.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>', title: '12-Point QC Check', desc: 'Each garment is inspected for stitching, colour, sizing, and finish before leaving production.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>', title: 'Packing & Labelling', desc: 'Orders are individually labelled by size and department, ready for seamless distribution.' }
-  ],
-  [
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>', title: 'UAE-Wide Dispatch', desc: 'Tracked delivery to all 7 Emirates within the agreed timeline — no exceptions.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>', title: 'Aftercare Support', desc: 'Post-delivery assistance for any adjustments, reorders, or new-hire additions.' },
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', title: 'Inventory Management', desc: 'Ongoing stock management ensures your team is always fully uniformed across all departments.' }
-  ]
-];
-
-let activeStep = 0;
-
-function activateStep(idx) {
-  activeStep = idx;
-  const steps = document.querySelectorAll('.step');
-  steps.forEach((s, i) => {
-    s.classList.remove('active', 'done');
-    if (i < idx) s.classList.add('done');
-    if (i === idx) s.classList.add('active');
-  });
-
-  // Animate progress line
-  const prog = document.getElementById('tlProg');
-  if (prog) {
-    const pct = idx === 0 ? 0 : (idx / 3) * 100;
-    prog.style.width = pct + '%';
-  }
-
-  // Render detail panel
-  const panel = document.getElementById('stepDetail');
-  if (!panel) return;
-  const data = stepDetails[idx];
-  panel.className = 'step-detail show';
-  panel.innerHTML = data.map(d => `
-    <div class="det-item">
-      <div class="det-ico">${d.icon}</div>
-      <div class="det-text">
-        <strong>${d.title}</strong>
-        <span>${d.desc}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-function initProcess() {
-  activateStep(0);
-  // Auto-cycle through steps on scroll into view
-  const proc = document.querySelector('.proc-sec');
-  if (!proc) return;
-  let cycleTimer = null;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        let i = 0;
-        cycleTimer = setInterval(() => {
-          i = (i + 1) % 4;
-          activateStep(i);
-        }, 2200);
-      } else {
-        clearInterval(cycleTimer);
-      }
-    });
-  }, { threshold: 0.3 });
-  obs.observe(proc);
-}
-
-/* ====== FORM SUBMIT ====== */
-function validateEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
-
-function showFormMsg(type, msg) {
-  const isErr = type === 'error';
-  let el = document.getElementById(isErr ? 'formErrorMsg' : 'formSuccessMsg');
-  if (!el) {
-    el = document.createElement('div');
-    el.id = isErr ? 'formErrorMsg' : 'formSuccessMsg';
-    const btn = document.getElementById('submitBtn');
-    btn.parentNode.insertBefore(el, btn);
-  }
-  el.style.cssText = isErr
-    ? 'background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:12px 16px;font-size:13px;color:#DC2626;margin-bottom:14px;display:flex;align-items:center;gap:8px;'
-    : 'background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:14px 18px;font-size:13px;color:#16A34A;margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:600;';
-  el.innerHTML = (isErr ? '⚠️ ' : '✅ ') + msg;
-  el.style.display = 'flex';
-  if (isErr) setTimeout(() => { el.style.display = 'none'; }, 6000);
-}
-
-async function handleSubmit(btn) {
-  // Get all form elements
-  const fEl = document.getElementById('firstName');
-  const lEl = document.getElementById('lastName');
-  const eEl = document.getElementById('fromEmail');
-  const cEl = document.getElementById('company');
-  const pEl = document.getElementById('phone');
-  const sEl = document.getElementById('service');
-  const qEl = document.getElementById('quantity');
-  const mEl = document.getElementById('message');
-
-  // Safety guard
-  if (!fEl || !eEl) {
-    showFormMsg('error', 'Form initialisation error — please refresh the page and try again.');
-    return;
-  }
-
-  const firstName = fEl.value.trim();
-  const lastName  = lEl ? lEl.value.trim() : '';
-  const fromEmail = eEl.value.trim();
-  const company   = cEl ? cEl.value.trim() : '';
-  const phone     = pEl ? pEl.value.trim() : '';
-  const service   = sEl ? sEl.value : '';
-  const quantity  = qEl ? qEl.value : '';
-  const message   = mEl ? mEl.value.trim() : '';
-
-  // Validation
-  if (!firstName) { showFormMsg('error', 'Please enter your first name.'); fEl.focus(); return; }
-  if (!fromEmail) { showFormMsg('error', 'Please enter your email address.'); eEl.focus(); return; }
-  if (!validateEmail(fromEmail)) { showFormMsg('error', 'Please enter a valid email address — e.g. you@company.ae'); eEl.focus(); return; }
-
-  // Hide old messages
-  ['formErrorMsg','formSuccessMsg'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
-
-  const orig = btn.textContent;
-  btn.textContent = '⏳ Sending...';
-  btn.style.background = '#6B7280';
-  btn.disabled = true;
-
-  const ACCESS_KEY = '66ae1d74-4646-47e5-8dac-78dc3a751fb0'; 
-
-  const payload = {
-    access_key: ACCESS_KEY,
-    subject: 'New Uniform Enquiry — ' + firstName + ' ' + lastName + (company ? ' · ' + company : ''),
-    from_name: 'House of Panache Website',
-    name: firstName + ' ' + lastName,
-    email: fromEmail,
-    phone: phone || 'Not provided',
-    company: company || 'Not provided',
-    service: service || 'Not specified',
-    quantity: quantity || 'Not specified',
-    message: message || 'No additional message provided',
-    botcheck: ''
-  };
-
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (!res.ok) throw new Error('Network error ' + res.status);
-    const data = await res.json();
-
-    if (data.success) {
-      btn.textContent = '✓ Message Sent!';
-      btn.style.background = '#16A34A';
-      // Clear all fields
-      [fEl, lEl, cEl, eEl, pEl, mEl].forEach(el => { if (el) el.value = ''; });
-      if (sEl) sEl.selectedIndex = 0;
-      if (qEl) qEl.selectedIndex = 0;
-      showFormMsg('success', "Thank you! We'll be in touch within 2 business hours.");
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.style.background = '';
-        btn.disabled = false;
-        const ok = document.getElementById('formSuccessMsg');
-        if (ok) ok.style.display = 'none';
-      }, 6000);
-    } else {
-      throw new Error(data.message || 'Server rejected submission');
-    }
-
-  } catch (err) {
-    console.error('Form submission error:', err);
-    btn.textContent = orig;
-    btn.style.background = '';
-    btn.disabled = false;
-
-    // Build WhatsApp fallback with filled data
-    const waText = encodeURIComponent(
-      'Hello, I would like to enquire about your uniform services.' +
-      '\n\nName: ' + firstName + ' ' + lastName +
-      '\nCompany: ' + (company || 'N/A') +
-      '\nEmail: ' + fromEmail +
-      '\nPhone: ' + (phone || 'N/A') +
-      '\nService: ' + (service || 'N/A') +
-      '\nQuantity: ' + (quantity || 'N/A') +
-      (message ? '\nRequirements: ' + message : '')
-    );
-
-    showFormMsg('error',
-      'Could not send email — please <a href="https://wa.me/971506178806?text=' + waText + '" target="_blank" style="color:#DC2626;font-weight:700;text-decoration:underline;">send via WhatsApp</a> or email <a href="mailto:info@houseofpanache.ae" style="color:#DC2626;font-weight:700;">info@houseofpanache.ae</a> directly.'
-    );
-  }
-}
-</script>
+<script src="main.js"></script>
 </body>
 </html>

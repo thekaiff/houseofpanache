@@ -58,8 +58,10 @@
 
   <!-- HERO -->
 <section class="hero" id="heroSection">
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline>
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline playsinline poster="images/hero-fallback.jpg">
     <source src="videos/hop.webm" type="video/webm">
+    <source src="videos/hop.mp4" type="video/mp4">
+    Your browser does not support video playback. Please view on a supported device.
   </video>
   <div class="hero-grain"></div>
   <div class="hero-grad"></div>
@@ -76,13 +78,6 @@
       UAE's Leading Uniform Manufacturer
     </div>
 
-    <!-- Split-text headline — each word animates independently
-    <h1 class="hero-h1" id="heroH1">
-      We Design &amp;<br>
-      Manufacture<br>
-      <em class="ital">Premium Uniforms</em>
-    </h1> -->
-
     <h1 class="hero-h1" id="heroH1">
       <span class="hero-line"><span class="hero-line-inner">We Design &amp;</span></span>
       <span class="hero-line"><span class="hero-line-inner">Manufacture</span></span>
@@ -93,12 +88,6 @@
       30+ years of precision craftsmanship across the UAE —
       corporate, medical, hospitality, industrial, and beyond.
     </p>
-
-    <!-- CTAs -->
-    <div class="hero-btns" id="heroBtns">
-      <button class="btn-hp btn-green" onclick="go('contact')">Get a Free Consultation</button>
-      <button class="btn-hp btn-ghost" onclick="go('services')">Explore Services</button>
-    </div>
   </div>
 
   <!-- Right stat column -->

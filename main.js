@@ -126,28 +126,65 @@ function initHeroVideoAutoplay() {
   const video = document.getElementById('heroVideo');
   if (!video) return;
 
-  // Try to play immediately (works on some iOS 13+)
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(error => {
-      console.log('Video autoplay failed initially, setting up fallback');
-      // Fallback: play on first user interaction
-      const playOnInteraction = () => {
-        video.play().catch(() => null);
-        document.removeEventListener('touchstart', playOnInteraction);
-        document.removeEventListener('click', playOnInteraction);
-      };
-      document.addEventListener('touchstart', playOnInteraction, { once: true });
-      document.addEventListener('click', playOnInteraction, { once: true });
-    });
-  }
+  // Set required attributes for mobile autoplay
+  video.setAttribute('playsinline', 'playsinline');
+  video.setAttribute('webkit-playsinline', 'webkit-playsinline');
+  video.muted = true;  // Ensure muted for autoplay policy
+  video.autoplay = true;
   
-  // Ensure video keeps playing
-  video.addEventListener('pause', () => {
+  // Function to attempt playing the video
+  const attemptPlay = () => {
+    if (video.paused) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log('Video play failed:', err);
+        });
+      }
+    }
+  };
+
+  // Try to play immediately
+  attemptPlay();
+  
+  // Try again after a short delay (helps with some mobile browsers)
+  setTimeout(attemptPlay, 100);
+  setTimeout(attemptPlay, 500);
+  
+  // Play on page visibility change (when tab becomes active)
+  document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
-      video.play().catch(() => null);
+      setTimeout(attemptPlay, 100);
     }
   });
+  
+  // Play on user interaction (tap/scroll) as fallback
+  const playOnInteraction = () => {
+    attemptPlay();
+    document.removeEventListener('touchstart', playOnInteraction);
+    document.removeEventListener('scroll', playOnInteraction);
+  };
+  document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
+  document.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
+  
+  // Restart video if it pauses unexpectedly
+  video.addEventListener('pause', () => {
+    if (!document.hidden && !video.ended) {
+      setTimeout(attemptPlay, 50);
+    }
+  });
+  
+  // Handle when video is visible in viewport (IntersectionObserver)
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !document.hidden) {
+          attemptPlay();
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(video);
+  }
 }
 
 /* ============================================================
@@ -768,8 +805,9 @@ function initRevSwipe() {
         const gapWidth = 18;
         const itemWidth = cardWidth + gapWidth;
         const numPerPage = perView();
+        const pageWidth = itemWidth * numPerPage;
         
-        track.style.transform = `translateX(calc(-${rIdx * itemWidth * numPerPage}px + ${currentX}px))`;
+        track.style.transform = `translateX(calc(-${rIdx * pageWidth}px + ${currentX}px))`;
       }
     }
   };
@@ -785,21 +823,29 @@ function initRevSwipe() {
     const gapWidth = 18;
     const itemWidth = cardWidth + gapWidth;
     const numPerPage = perView();
-    const threshold = itemWidth * 0.2; // 20% of card width triggers slide
+    const pageWidth = itemWidth * numPerPage;
+    const threshold = pageWidth * 0.2; // 20% of page width triggers slide
     
     let newIdx = rIdx;
     
-    // Check swipe direction with velocity
-    if (currentX < -threshold || (Math.abs(currentX) > 5 && velocity < -0.3)) {
+    // Determine swipe direction and magnitude
+    const absDistance = Math.abs(currentX);
+    const absVelocity = Math.abs(velocity);
+    
+    // Strong swipe (velocity-based) or significant drag
+    if (currentX < -threshold || (absDistance > 5 && velocity < -0.5)) {
+      // Swiped left - move forward
       newIdx = Math.min(totalPages() - 1, rIdx + 1);
-    } else if (currentX > threshold || (Math.abs(currentX) > 5 && velocity > 0.3)) {
+    } else if (currentX > threshold || (absDistance > 5 && velocity > 0.5)) {
+      // Swiped right - move backward
       newIdx = Math.max(0, rIdx - 1);
     }
+    // else: stay on current page
     
     // Update index and render with smooth transition
     rIdx = newIdx;
-    track.style.transition = 'transform 0.48s cubic-bezier(0.32, 0.72, 0.26, 1)';
-    track.style.transform = `translateX(-${rIdx * itemWidth * numPerPage}px)`;
+    track.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    track.style.transform = `translateX(-${rIdx * pageWidth}px)`;
     
     // Update dots
     const dotsEl = document.getElementById('revDots');

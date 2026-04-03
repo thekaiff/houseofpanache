@@ -1031,16 +1031,6 @@ nav.scrolled {
   overflow: hidden;
   box-shadow: var(--glass-shadow), var(--glass-inset);
 }
-.clients-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--green-light), var(--green), var(--green-light), transparent);
-  opacity: 0.7;
-}
 .clients-top {
   text-align: center;
   margin-bottom: 44px;

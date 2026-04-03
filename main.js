@@ -67,15 +67,20 @@ function _dismissToast(el) {
   el.classList.remove('entering', 'stacked-1', 'stacked-2', 'stacked-3');
   el.classList.add('dismissing');
   setTimeout(() => _restackToasts(), 20);
-  el.addEventListener('transitionend', () => el.remove(), { once: true });
+  const handler = () => {
+    el.remove();
+    el.removeEventListener('transitionend', handler);
+  };
+  el.addEventListener('transitionend', handler);
 }
 
 function _addSwipeDismiss(el) {
-  let startX = 0, isDragging = false, currentX = 0;
+  let startX = 0, isDragging = false, currentX = 0, startTime = 0;
 
   const onStart = (e) => {
     startX = e.touches ? e.touches[0].clientX : e.clientX;
     isDragging = true;
+    startTime = Date.now();
     el.style.transition = 'none';
   };
   const onMove = (e) => {
@@ -89,13 +94,19 @@ function _addSwipeDismiss(el) {
   const onEnd = () => {
     if (!isDragging) return;
     isDragging = false;
-    el.style.transition = '';
-    if (currentX > 80) {
+    const duration = Date.now() - startTime;
+    const velocity = Math.abs(currentX) / (duration || 1);
+    
+    if (currentX > 80 || velocity > 1.2) {
       clearTimeout(el._dismissTimer);
-      _dismissToast(el);
+      el.style.transition = 'transform 0.42s cubic-bezier(0.4, 0, 1, 1), opacity 0.30s ease';
+      el.style.transform = 'translateX(110%) scale(0.96)';
+      el.style.opacity = '0';
+      setTimeout(() => _dismissToast(el), 10);
     } else {
-      el.style.transform = '';
-      el.style.opacity   = '';
+      el.style.transition = 'transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease';
+      el.style.transform = 'translateX(0) scale(1)';
+      el.style.opacity = '1';
     }
     currentX = 0;
   };
@@ -109,6 +120,37 @@ function _addSwipeDismiss(el) {
 }
 
 /* ============================================================
+   HERO VIDEO AUTOPLAY (iOS Support)
+   ============================================================ */
+function initHeroVideoAutoplay() {
+  const video = document.getElementById('heroVideo');
+  if (!video) return;
+
+  // Try to play immediately (works on some iOS 13+)
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log('Video autoplay failed initially, setting up fallback');
+      // Fallback: play on first user interaction
+      const playOnInteraction = () => {
+        video.play().catch(() => null);
+        document.removeEventListener('touchstart', playOnInteraction);
+        document.removeEventListener('click', playOnInteraction);
+      };
+      document.addEventListener('touchstart', playOnInteraction, { once: true });
+      document.addEventListener('click', playOnInteraction, { once: true });
+    });
+  }
+  
+  // Ensure video keeps playing
+  video.addEventListener('pause', () => {
+    if (!document.hidden) {
+      video.play().catch(() => null);
+    }
+  });
+}
+
+/* ============================================================
    NAVIGATION INITIALIZATION
    ============================================================ */
 window.addEventListener('DOMContentLoaded', () => {
@@ -119,6 +161,9 @@ window.addEventListener('DOMContentLoaded', () => {
       go('home');
     });
   }
+  
+  // Initialize hero video autoplay
+  initHeroVideoAutoplay();
 });
 
 /* ============================================================

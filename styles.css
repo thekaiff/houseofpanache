@@ -180,6 +180,7 @@
 .hop-toast.dismissing {
   transform: translateX(110%) scale(0.96);
   opacity: 0;
+  pointer-events: none;
   transition:
     transform 0.42s cubic-bezier(0.4, 0, 1, 1),
     opacity   0.30s ease;
@@ -2970,6 +2971,12 @@ a.soc-btn { text-decoration: none; }
    RESPONSIVE — 768px
    ============================================================ */
 @media (max-width: 768px) {
+  #hop-toast-container {
+    bottom: 28px;
+    right: 16px;
+    width: calc(100% - 32px);
+    max-width: 360px;
+  }
   nav { width: calc(100% - 28px); padding: 10px 12px 10px 14px; justify-content: space-between; }
   .nav-logo { position: relative; left: auto; }
   .nav-hamburger { position: relative; right: auto; }
@@ -3024,6 +3031,13 @@ a.soc-btn { text-decoration: none; }
    RESPONSIVE — 480px
    ============================================================ */
 @media (max-width: 480px) {
+  #hop-toast-container {
+    bottom: 28px;
+    right: 16px;
+    left: auto;
+    width: calc(100% - 32px);
+    max-width: 340px;
+  }
   .clients-grid { grid-template-columns: 1fr 1fr; }
   .hstat { flex: 1 1 100%; border-right: none !important; }
   .hero-stats { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; }

@@ -824,25 +824,23 @@ function initRevSwipe() {
     const itemWidth = cardWidth + gapWidth;
     const numPerPage = perView();
     const pageWidth = itemWidth * numPerPage;
-    const threshold = pageWidth * 0.2; // 20% of page width triggers slide
+    
+    // Simple distance-based detection - require ~30% drag to trigger slide
+    const dragThreshold = pageWidth * 0.3;
     
     let newIdx = rIdx;
     
-    // Determine swipe direction and magnitude
-    const absDistance = Math.abs(currentX);
-    const absVelocity = Math.abs(velocity);
-    
-    // Strong swipe (velocity-based) or significant drag
-    if (currentX < -threshold || (absDistance > 5 && velocity < -0.5)) {
-      // Swiped left - move forward
+    // Determine direction: swipe left goes forward, swipe right goes backward
+    if (currentX < -dragThreshold) {
+      // Swiped left - move forward one page
       newIdx = Math.min(totalPages() - 1, rIdx + 1);
-    } else if (currentX > threshold || (absDistance > 5 && velocity > 0.5)) {
-      // Swiped right - move backward
+    } else if (currentX > dragThreshold) {
+      // Swiped right - move backward one page
       newIdx = Math.max(0, rIdx - 1);
     }
-    // else: stay on current page
+    // else: stay on current page (insufficient drag)
     
-    // Update index and render with smooth transition
+    // Update index and animate to new position
     rIdx = newIdx;
     track.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
     track.style.transform = `translateX(-${rIdx * pageWidth}px)`;

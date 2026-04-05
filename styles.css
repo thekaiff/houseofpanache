@@ -685,6 +685,10 @@ nav.scrolled {
   z-index: 0;
   object-fit: cover;
   object-position: center;
+  /* iOS Safari fix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .hero-grad {
@@ -906,71 +910,64 @@ nav.scrolled {
 @media (max-width: 768px) {
   .hero { flex-direction: column; }
   .hero-body {
-    width: 100%;
-    padding: 80px 24px 200px; /* Added top padding for nav, increased bottom for stats space */
-    justify-content: flex-end;
-  }
-  .hero-rule { left: 24px; right: 24px; bottom: 100px; }
-  .hero-stats-col {
-    position: absolute;
-    bottom: 26px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0;
-    flex-direction: row;
-    gap: 14px;
-    align-items: flex-end;
-    justify-content: center;
-    width: auto;
-    max-width: calc(100% - 48px);
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .hero-stat-item {
-    padding: 0;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 6px;
-    opacity: 0.95;
-    text-align: center;
-  }
-  .hsi-n {
-    font-size: clamp(24px, 5vw, 32px);
-  }
-  .hsi-plus {
-    font-size: clamp(12px, 2vw, 16px);
-    margin-bottom: 2px;
-  }
-  .hsi-l { 
-    display: block;
-    font-size: 7px;
-    margin-left: 4px;
-    text-align: left;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  .hsi-divider { display: none; }
-  .hero-scroll-cue { left: 24px; transform: none; }
-  .hero-h1 { font-size: clamp(38px, 10vw, 60px); }
+  width: 100%;
+  padding: 88px 24px 32px;
+  justify-content: flex-end;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+.hero-rule { left: 24px; right: 24px; bottom: 88px; }
+
+/* Stats sit below buttons, in document flow */
+.hero-stats-col {
+  position: relative;
+  bottom: unset;
+  left: unset;
+  transform: none;
+  padding: 28px 0 40px;
+  flex-direction: row;
+  gap: 0;
+  align-items: flex-start;
+  justify-content: center;   /* centred across full width */
+  width: 100%;
+  flex: unset;
+}
+.hero-stat-item {
+  padding: 0 24px;           /* equal padding each side */
+  flex-direction: column;
+  align-items: center;       /* centre number + label */
+  text-align: center;
+  gap: 2px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.hero-stat-item:last-child {
+  border-right: none;
+}
+.hsi-n {
+  font-size: clamp(26px, 6.5vw, 40px);
+  letter-spacing: -0.04em;
+}
+.hsi-plus {
+  font-size: clamp(13px, 3vw, 18px);
+  margin-bottom: 2px;
+}
+.hsi-l {
+  display: block;
+  font-size: 7.5px;
+  margin-left: 0;
+  margin-top: 4px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.10em;
+}
+.hsi-divider { display: none; }
+.hero-scroll-cue { display: none; }
+.hero-h1 { font-size: clamp(36px, 9.5vw, 58px); }
+.hero-sub { max-width: 100%; }
+.hero-btns { margin-bottom: 0; }
 }
 
-@media (min-width: 769px) {
-  .hero-stats-col {
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
-    width: auto !important;
-    justify-content: flex-end !important;
-    align-items: flex-end !important;
-    padding: 0 72px 136px 0 !important;
-    flex-direction: column !important;
-  }
-  .hero-stat-item {
-    text-align: right !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+
 
 /* ============================================================
    MARQUEE
@@ -2483,7 +2480,7 @@ a.soc-btn { text-decoration: none; }
   transition: var(--t);
   position: relative;
   overflow: hidden;
-  cursor: default;
+  cursor: pointer;
   box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset;
 }
 .ind-row:first-child {
@@ -2930,6 +2927,201 @@ a.soc-btn { text-decoration: none; }
 .stagger.in > *:nth-child(10) { opacity:1; transform:none; transition-delay:.49s }
 .stagger.in > *:nth-child(11) { opacity:1; transform:none; transition-delay:.54s }
 .stagger.in > *:nth-child(12) { opacity:1; transform:none; transition-delay:.59s }
+
+
+/* ============================================================
+   INDUSTRY LIGHTBOX MODAL
+   ============================================================ */
+.ind-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10,16,12,0.82);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s var(--ease);
+}
+.ind-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.ind-modal {
+  background: rgba(250,247,242,0.96);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(255,255,255,0.88);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.28), 0 1px 0 rgba(255,255,255,0.9) inset;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.42s var(--ease-spring), opacity 0.38s var(--ease);
+  opacity: 0;
+}
+.ind-modal-overlay.open .ind-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.ind-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 36px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  position: sticky;
+  top: 0;
+  background: rgba(250,247,242,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+.ind-modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  color: var(--gray-900);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.ind-modal-sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.ind-modal-close {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: var(--t);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+.ind-modal-close:hover {
+  background: var(--green-pale);
+  color: var(--green-darker);
+  transform: rotate(90deg);
+}
+
+.ind-modal-body { padding: 28px 36px 36px; }
+
+/* Photo grid inside modal */
+.ind-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.ind-photo-cell {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--gray-100);
+  position: relative;
+}
+.ind-photo-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s var(--ease);
+  display: block;
+}
+.ind-photo-cell:hover img { transform: scale(1.05); }
+
+/* Placeholder when no image — shows industry icon */
+.ind-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--green-pale), var(--beige));
+}
+.ind-photo-placeholder svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--green-darker);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+.ind-photo-placeholder span {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  opacity: 0.6;
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Feature tags strip */
+.ind-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+.ind-modal-tag {
+  padding: 5px 13px;
+  border-radius: 50px;
+  background: var(--green-pale);
+  border: 1px solid var(--green-mid);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--green-darker);
+  letter-spacing: 0.02em;
+}
+
+/* Description */
+.ind-modal-desc {
+  font-size: 13.5px;
+  color: var(--gray-500);
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+
+/* CTA inside modal */
+.ind-modal-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ind-modal-head { padding: 22px 22px 18px; }
+  .ind-modal-body { padding: 20px 22px 28px; }
+  .ind-photo-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .ind-photo-cell:last-child { display: none; }
+}
 
 /* ============================================================
    RESPONSIVE — 1024px

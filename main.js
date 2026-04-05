@@ -126,65 +126,43 @@ function initHeroVideoAutoplay() {
   const video = document.getElementById('heroVideo');
   if (!video) return;
 
-  // Set required attributes for mobile autoplay
-  video.setAttribute('playsinline', 'playsinline');
-  video.setAttribute('webkit-playsinline', 'webkit-playsinline');
-  video.muted = true;  // Ensure muted for autoplay policy
-  video.autoplay = true;
-  
-  // Function to attempt playing the video
-  const attemptPlay = () => {
-    if (video.paused) {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.log('Video play failed:', err);
-        });
-      }
-    }
-  };
+  // iOS requires these set programmatically too
+  video.muted       = true;
+  video.autoplay    = true;
+  video.loop        = true;
+  video.playsInline = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
 
-  // Try to play immediately
-  attemptPlay();
-  
-  // Try again after a short delay (helps with some mobile browsers)
-  setTimeout(attemptPlay, 100);
-  setTimeout(attemptPlay, 500);
-  
-  // Play on page visibility change (when tab becomes active)
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      setTimeout(attemptPlay, 100);
+  function tryPlay() {
+    if (video.paused) {
+      video.play().catch(() => {
+        // Silently fail — poster image shows as fallback
+      });
     }
+  }
+
+  // Try immediately, then stagger a few retries
+  tryPlay();
+  setTimeout(tryPlay, 200);
+  setTimeout(tryPlay, 800);
+
+  // Re-attempt on any user gesture (required on some iOS versions)
+  const onGesture = () => { tryPlay(); };
+  document.addEventListener('touchstart', onGesture, { once: true, passive: true });
+  document.addEventListener('touchend',   onGesture, { once: true, passive: true });
+
+  // Re-attempt when tab regains focus
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tryPlay();
   });
-  
-  // Play on user interaction (tap/scroll) as fallback
-  const playOnInteraction = () => {
-    attemptPlay();
-    document.removeEventListener('touchstart', playOnInteraction);
-    document.removeEventListener('scroll', playOnInteraction);
-  };
-  document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
-  document.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
-  
-  // Restart video if it pauses unexpectedly
+
+  // Prevent unexpected pause loops
   video.addEventListener('pause', () => {
     if (!document.hidden && !video.ended) {
-      setTimeout(attemptPlay, 50);
+      setTimeout(tryPlay, 100);
     }
   });
-  
-  // Handle when video is visible in viewport (IntersectionObserver)
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !document.hidden) {
-          attemptPlay();
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(video);
-  }
 }
 
 /* ============================================================
@@ -238,7 +216,7 @@ function go(page) {
     setTimeout(() => showToast({
       icon: '✦', iconClass: 'green',
       title: '8 Industry Categories',
-      msg: 'Premium uniforms for every sector',
+      msg: 'Professional uniforms for every sector',
       duration: 4000
     }), 350);
   }
@@ -507,7 +485,7 @@ const stepDetails = [
     { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg>',                                                                                                                                                                                                                                                                             title: 'Prototype Approval',  desc: 'A physical sample garment is produced for fitting and sign-off before full production.' }
   ],
   [
-    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M2 20h20M4 20V10l6-4v4l6-4v14"/><rect x="9" y="14" width="6" height="6"/></svg>',                                                                                                                                                                                                                             title: 'In-House Production', desc: 'Every garment is cut, sewn, and finished in our dedicated UAE facility using premium machinery.' },
+    { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M2 20h20M4 20V10l6-4v4l6-4v14"/><rect x="9" y="14" width="6" height="6"/></svg>',                                                                                                                                                                                                                             title: 'In-House Production', desc: 'Every garment is cut, sewn, and finished in our dedicated UAE facility using specialist machinery.' },
     { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',                                                                                                                                                                                                                              title: '12-Point QC Check',   desc: 'Each garment is inspected for stitching, colour, sizing, and finish before leaving production.' },
     { icon: '<svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--green-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>',                                                                                                                                                                 title: 'Packing & Labelling', desc: 'Orders are individually labelled by size and department, ready for seamless distribution.' }
   ],
@@ -662,7 +640,7 @@ function renderRev() {
   }
   
   // Initialize swipe after render
-  setTimeout(initRevSwipe, 50);
+  requestAnimationFrame(() => initRevSwipe());
 }
 
 async function loadReviews() {
@@ -754,134 +732,94 @@ function initRevSwipe() {
   const track  = document.getElementById('revTrack');
   if (!slider || !track) return;
 
-  let startX = 0;
-  let startY = 0;
-  let currentX = 0;
-  let isDragging = false;
-  let velocity = 0;
-  let lastX = 0;
-  let lastTime = 0;
+  // Remove any previously attached listeners by cloning
+  const newSlider = slider.cloneNode(true);
+  slider.parentNode.replaceChild(newSlider, slider);
+  const freshTrack = document.getElementById('revTrack');
 
-  const onTouchStart = (e) => {
-    if (totalPages() <= 1) return;
-    
-    // Clear auto-advance timer on interaction
-    if (_revAutoTimer) clearInterval(_revAutoTimer);
-    
-    startX = e.touches ? e.touches[0].clientX : e.clientX;
-    startY = e.touches ? e.touches[0].clientY : e.clientY;
-    isDragging = true;
-    currentX = 0;
-    lastX = startX;
-    lastTime = Date.now();
-    
-    // Pause transition while dragging
-    track.style.transition = 'none';
-  };
+  let startX    = 0;
+  let deltaX    = 0;
+  let dragging  = false;
 
-  const onTouchMove = (e) => {
-    if (!isDragging) return;
-    
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const y = e.touches ? e.touches[0].clientY : e.clientY;
-    const deltaX = x - startX;
-    const deltaY = Math.abs(y - startY);
+  function getPageWidth() {
+    const first = freshTrack.querySelector('.r-card');
+    if (!first) return 0;
+    return (first.offsetWidth + 18) * perView();
+  }
 
-    // Only swipe if horizontal movement is greater than vertical
-    if (Math.abs(deltaX) > deltaY) {
-      e.preventDefault();
-      currentX = deltaX;
-      
-      // Calculate velocity for momentum
-      const now = Date.now();
-      const dt = Math.max(now - lastTime, 16);
-      velocity = (x - lastX) / dt;
-      lastX = x;
-      lastTime = now;
-      
-      const first = track.querySelector('.r-card');
-      if (first) {
-        const cardWidth = first.offsetWidth;
-        const gapWidth = 18;
-        const itemWidth = cardWidth + gapWidth;
-        const numPerPage = perView();
-        const pageWidth = itemWidth * numPerPage;
-        
-        track.style.transform = `translateX(calc(-${rIdx * pageWidth}px + ${currentX}px))`;
-      }
-    }
-  };
-
-  const onTouchEnd = () => {
-    if (!isDragging) return;
-    isDragging = false;
-    
-    const first = track.querySelector('.r-card');
-    if (!first) return;
-    
-    const cardWidth = first.offsetWidth;
-    const gapWidth = 18;
-    const itemWidth = cardWidth + gapWidth;
-    const numPerPage = perView();
-    const pageWidth = itemWidth * numPerPage;
-    
-    // Simple distance-based detection - require ~30% drag to trigger slide
-    const dragThreshold = pageWidth * 0.3;
-    
-    let newIdx = rIdx;
-    
-    // Determine direction: swipe left goes forward, swipe right goes backward
-    if (currentX < -dragThreshold) {
-      // Swiped left - move forward one page
-      newIdx = Math.min(totalPages() - 1, rIdx + 1);
-    } else if (currentX > dragThreshold) {
-      // Swiped right - move backward one page
-      newIdx = Math.max(0, rIdx - 1);
-    }
-    // else: stay on current page (insufficient drag)
-    
-    // Update index and animate to new position
-    rIdx = newIdx;
-    track.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    track.style.transform = `translateX(-${rIdx * pageWidth}px)`;
-    
-    // Update dots
+  function snapTo(idx) {
+    rIdx = Math.max(0, Math.min(totalPages() - 1, idx));
+    freshTrack.style.transition = 'transform 0.48s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    freshTrack.style.transform  = `translateX(-${rIdx * getPageWidth()}px)`;
     const dotsEl = document.getElementById('revDots');
     if (dotsEl) {
-      dotsEl.querySelectorAll('.r-dot').forEach((dot, i) => {
-        dot.classList.toggle('on', i === rIdx);
+      dotsEl.querySelectorAll('.r-dot').forEach((d, i) => {
+        d.classList.toggle('on', i === rIdx);
       });
     }
-    
-    // Restart auto-advance
-    setTimeout(() => startRevAuto(), 500);
+  }
+
+  const onStart = (e) => {
+    if (totalPages() <= 1) return;
+    startX   = e.touches ? e.touches[0].clientX : e.clientX;
+    deltaX   = 0;
+    dragging = true;
+    freshTrack.style.transition = 'none';
+    if (_revAutoTimer) clearInterval(_revAutoTimer);
   };
 
-  // Desktop mouse events
-  slider.addEventListener('mousedown', onTouchStart);
-  window.addEventListener('mousemove', onTouchMove);
-  window.addEventListener('mouseup', onTouchEnd);
-  
-  // Mobile touch events
-  slider.addEventListener('touchstart', onTouchStart, { passive: true });
-  slider.addEventListener('touchmove', onTouchMove, { passive: false });
-  slider.addEventListener('touchend', onTouchEnd);
-  
-  // Cursor feedback for dragging
-  slider.addEventListener('mouseenter', () => {
-    if (totalPages() > 1) slider.style.cursor = 'grab';
-  });
-  slider.addEventListener('mouseleave', () => {
-    slider.style.cursor = 'default';
-  });
-  slider.addEventListener('mousedown', () => {
-    if (totalPages() > 1) slider.style.cursor = 'grabbing';
-  });
-  window.addEventListener('mouseup', () => {
-    if (slider.matches(':hover') && totalPages() > 1) {
-      slider.style.cursor = 'grab';
+  const onMove = (e) => {
+    if (!dragging) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : (e.clientY || 0);
+    deltaX = x - startX;
+
+    // Only hijack if clearly horizontal
+    const absX = Math.abs(deltaX);
+    const absY = e.touches ? Math.abs(e.touches[0].clientY - (e.touches[0].clientY || 0)) : 0;
+    if (absX < 6) return;
+
+    const pw = getPageWidth();
+    // Rubber-band at edges
+    let offset = rIdx * pw - deltaX;
+    if (offset < 0) offset = offset * 0.25;
+    if (offset > (totalPages() - 1) * pw) {
+      offset = (totalPages() - 1) * pw + (offset - (totalPages() - 1) * pw) * 0.25;
     }
-  });
+    freshTrack.style.transform = `translateX(-${offset}px)`;
+  };
+
+  const onEnd = () => {
+    if (!dragging) return;
+    dragging = false;
+
+    const THRESHOLD = 52; // px drag needed to flip one page
+
+    if (deltaX < -THRESHOLD) {
+      snapTo(rIdx + 1);        // swiped left → next page
+    } else if (deltaX > THRESHOLD) {
+      snapTo(rIdx - 1);        // swiped right → prev page
+    } else {
+      snapTo(rIdx);            // snap back to current
+    }
+
+    setTimeout(() => startRevAuto(), 600);
+  };
+
+  // Touch
+  newSlider.addEventListener('touchstart', onStart, { passive: true });
+  newSlider.addEventListener('touchmove',  onMove,  { passive: true });
+  newSlider.addEventListener('touchend',   onEnd);
+
+  // Mouse (desktop drag)
+  newSlider.addEventListener('mousedown', onStart);
+  window.addEventListener('mousemove',    onMove);
+  window.addEventListener('mouseup',      onEnd);
+
+  // Cursor
+  newSlider.style.cursor = totalPages() > 1 ? 'grab' : 'default';
+  newSlider.addEventListener('mousedown', () => { newSlider.style.cursor = 'grabbing'; });
+  window.addEventListener('mouseup',      () => { newSlider.style.cursor = 'grab'; });
 }
 
 window.addEventListener('resize', () => { rIdx = 0; renderRev(); }, { passive: true });
@@ -1014,6 +952,173 @@ async function handleSubmit(btn) {
   }
 }
 
+
+/* ============================================================
+   INDUSTRY LIGHTBOX
+   ============================================================ */
+const INDUSTRY_DATA = {
+  corporate: {
+    title: 'Corporate Uniforms',
+    sub: 'Executive & Staff Workwear',
+    desc: 'Precision-crafted corporate uniforms that reinforce your brand identity across every level of your organisation. From C-suite formal wear to front-line staff attire — consistent, polished, and built to last.',
+    tags: ['Formal Shirts', 'Blazers & Suits', 'Branded Lanyards', 'Custom Embroidery', 'Receptionist Wear'],
+    images: ['images/uniforms/corporate-1.jpeg', 'images/uniforms/corporate-2.jpeg', 'images/uniforms/corporate-3.jpeg'],
+    icon: `<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`
+  },
+  manufacturing: {
+    title: 'Manufacturing & Industrial',
+    sub: 'Factory & Site Workwear',
+    desc: 'Heavy-duty workwear engineered for demanding industrial environments. Hi-vis, flame-resistant, and reinforced garments that meet UAE safety regulations while keeping your workforce looking professional on site.',
+    tags: ['Hi-Vis Vests', 'Coveralls', 'Safety Footwear Pairing', 'Flame Resistant', 'Anti-static Fabrics'],
+    images: ['images/uniforms/manufacturing-1.jpg', 'images/uniforms/manufacturing-2.jpg', 'images/uniforms/manufacturing-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>`
+  },
+  safety: {
+    title: 'Public Safety & Emergency',
+    sub: 'Civil Services & Emergency Response',
+    desc: 'Authoritative, functional uniforms for civil protection and emergency response teams. Designed for rapid identification, maximum durability, and compliance with public safety standards across the UAE.',
+    tags: ['High-Visibility', 'Reflective Strips', 'Moisture Wicking', 'Rank Insignia', 'Durable Stitching'],
+    images: ['images/uniforms/safety-1.jpg', 'images/uniforms/safety-2.jpg', 'images/uniforms/safety-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`
+  },
+  sports: {
+    title: 'Sports & Fitness',
+    sub: 'Gyms, Clubs & Wellness Centres',
+    desc: 'Performance-driven sportswear and fitness uniforms that reflect your brand energy. Breathable fabrics, moisture management, and dynamic designs for gyms, sports clubs, personal trainers, and wellness teams.',
+    tags: ['Moisture-Wicking', 'Stretch Fabrics', 'Sublimation Print', 'Team Kits', 'Instructor Wear'],
+    images: ['images/uniforms/sports-1.jpg', 'images/uniforms/sports-2.jpg', 'images/uniforms/sports-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`
+  },
+  transportation: {
+    title: 'Transportation & Logistics',
+    sub: 'Drivers, Crew & Logistics Teams',
+    desc: 'Smart, professional uniforms for drivers, dispatchers, and logistics crews that project reliability and brand consistency across every delivery and journey. Built for comfort during long operational hours.',
+    tags: ['Driver Shirts', 'Cargo Trousers', 'Branded Jackets', 'Reflective Piping', 'Comfort Fit'],
+    images: ['images/uniforms/transportation-1.jpg', 'images/uniforms/transportation-2.jpg', 'images/uniforms/transportation-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`
+  },
+  healthcare: {
+    title: 'Healthcare & Medical',
+    sub: 'Hospitals, Clinics & Care Teams',
+    desc: 'Clinical uniforms that meet the hygiene and functional standards expected in healthcare environments. Colour-coded by department, easy to launder, and designed for comfort across extended shifts.',
+    tags: ['Medical Scrubs', 'Lab Coats', 'Nurse Uniforms', 'Department Colour Coding', 'Anti-microbial Fabrics'],
+    images: ['images/uniforms/healthcare-1.jpg', 'images/uniforms/healthcare-2.jpg', 'images/uniforms/healthcare-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`
+  },
+  hospitality: {
+    title: 'Hospitality & Hotels',
+    sub: 'Hotels, Resorts & Service Teams',
+    desc: 'Elegant uniforms that uphold the prestige of your property at every guest touchpoint. From front-of-house to housekeeping — each garment reflects the character and standard of your brand.',
+    tags: ['Front Desk Wear', 'Housekeeping', 'F&B Uniforms', 'Concierge Attire', 'Event Staff'],
+    images: ['images/uniforms/hospitality-1.jpg', 'images/uniforms/hospitality-2.jpg', 'images/uniforms/hospitality-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+  },
+  security: {
+    title: 'Security Services',
+    sub: 'Guards, Patrol & Access Control',
+    desc: 'Authoritative, functional security uniforms that communicate professionalism and deter unwanted behaviour. Durable fabrics, practical pocket configurations, and sharp presentation across all security roles.',
+    tags: ['Guard Shirts', 'Tactical Trousers', 'Epaulettes', 'Hi-Vis Options', 'Cold Weather Layers'],
+    images: ['images/uniforms/security-1.jpg', 'images/uniforms/security-2.jpg', 'images/uniforms/security-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+  },
+  salon: {
+    title: 'Salon & Spa',
+    sub: 'Beauty, Wellness & Personal Care',
+    desc: 'Elegant, functional workwear for salons, spas, and beauty professionals. Designed to project cleanliness and refinement while giving therapists and stylists the freedom of movement they need throughout the day.',
+    tags: ['Tunics', 'Beauty Aprons', 'Spa Robes', 'Stretch Fabrics', 'Branded Embroidery'],
+    images: ['images/uniforms/salon-1.jpg', 'images/uniforms/salon-2.jpg', 'images/uniforms/salon-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`
+  },
+  fnb: {
+    title: 'Food & Beverage',
+    sub: 'Restaurants, Cafés & Catering',
+    desc: 'Practical, brand-consistent uniforms for front-of-house and back-of-house teams. From chef whites to server attire — crafted for style, durability, and the pace of a busy service environment.',
+    tags: ['Chef Whites', 'Server Uniforms', 'Aprons', 'Barista Wear', 'Event Catering'],
+    images: ['images/uniforms/fnb-1.jpg', 'images/uniforms/fnb-2.jpg', 'images/uniforms/fnb-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`
+  },
+  retail: {
+    title: 'Retail',
+    sub: 'Stores, Showrooms & Brand Ambassadors',
+    desc: 'Customer-facing uniforms that make your team instantly recognisable and reinforce your retail brand. Polished, comfortable, and consistent — from luxury boutiques to high-street stores across the UAE.',
+    tags: ['Sales Advisor Wear', 'Branded Polos', 'Store Manager Attire', 'Seasonal Variations', 'Name Badge Ready'],
+    images: ['images/uniforms/retail-1.jpg', 'images/uniforms/retail-2.jpg', 'images/uniforms/retail-3.jpg'],
+    icon: `<svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`
+  }
+};
+
+function openIndustryModal(key) {
+  const data = INDUSTRY_DATA[key];
+  if (!data) return;
+
+  // Remove existing modal
+  const existing = document.getElementById('indModal');
+  if (existing) existing.remove();
+
+  // Build photo cells
+  const photoCells = data.images.map(src => `
+    <div class="ind-photo-cell">
+      <img src="${src}" alt="${data.title}" loading="lazy"
+           onerror="this.parentElement.innerHTML='<div class=\\'ind-photo-placeholder\\'>${data.icon}<span>${data.title}</span></div>'">
+    </div>
+  `).join('');
+
+  // Build tags
+  const tags = data.tags.map(t => `<span class="ind-modal-tag">${t}</span>`).join('');
+
+  const overlay = document.createElement('div');
+  overlay.className = 'ind-modal-overlay';
+  overlay.id = 'indModal';
+  overlay.innerHTML = `
+    <div class="ind-modal" role="dialog" aria-modal="true">
+      <div class="ind-modal-head">
+        <div>
+          <div class="ind-modal-title">${data.title}</div>
+          <div class="ind-modal-sub">${data.sub}</div>
+        </div>
+        <button class="ind-modal-close" onclick="closeIndustryModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="ind-modal-body">
+        <div class="ind-photo-grid">${photoCells}</div>
+        <div class="ind-modal-tags">${tags}</div>
+        <p class="ind-modal-desc">${data.desc}</p>
+        <div class="ind-modal-cta">
+          <button class="btn btn-prim" onclick="go('contact');closeIndustryModal()">Request a Quote</button>
+          <button class="btn btn-out" onclick="closeIndustryModal()">Back to Industries</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  // Trigger open animation
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => overlay.classList.add('open'));
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeIndustryModal();
+  });
+
+  // Close on Escape
+  const onKey = e => { if (e.key === 'Escape') closeIndustryModal(); };
+  document.addEventListener('keydown', onKey);
+  overlay._keyHandler = onKey;
+
+  document.body.style.overflow = 'hidden';
+}
+
+function closeIndustryModal() {
+  const overlay = document.getElementById('indModal');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  if (overlay._keyHandler) document.removeEventListener('keydown', overlay._keyHandler);
+  setTimeout(() => { overlay.remove(); }, 420);
+  document.body.style.overflow = '';
+}
+
 /* ============================================================
    DOM READY — kick everything off
    ============================================================ */
@@ -1028,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast({
       icon: '✦', iconClass: 'green',
       title: 'House of Panache',
-      msg: "UAE's premium uniform manufacturer",
+      msg: "UAE's trusted uniform manufacturer",
       duration: 5000
     });
   }, 1800);
